@@ -38,7 +38,7 @@
 
 <article>
   <header>
-	  <h1 class="title"><a href="papers/cve-2014-4449">iOS 8.1 and CVE-2014-4449</a></h1>
+	  <h1 class="title"><a href="papers/cve-2014-4449.html">iOS 8.1 and CVE-2014-4449</a></h1>
 	  <time class="pubdate" datetime="2014-10-20">2014-10-20</time>
 
   </header>
@@ -116,27 +116,27 @@ Impact Type: Allows unauthorized disclosure of
 
 <article>
   <header>
-	  <h1 class="title"><a href="papers/emailcerts">[Not?] Misissued Certificates:</a></h1>
+	  <h1 class="title"><a href="papers/emailcerts.html">[Not?] Misissued Certificates:</a></h1>
 	  <time class="pubdate" datetime="2014-04-03">2014-04-03</time>
   <h4>or, how I was able to get over 2500 certificates for domains that I do not own</h4>
 
   </header>
   <p>Four years ago, in 2010, <a target="_blank" href="https://www.seifried.org/security/">Kurt Seifried</a> released <a target="_blank" href="http://www.linux-magazine.com/w3/issue/114/054-055_kurt.pdf">research</a> on how certificate authorities (CAs) validated hostnames in SSL certificate requests. <a href="https://afreak.ca/blog/author/ckeigher/" target="_blank">Colin Keigher</a> followed on by with an <a href="https://afreak.ca/blog/whos-letting-me-become-ssladmin/" target="_blank">actual implementation</a> of that research resulting in his finding of five email providers that allowed the registering of addresses, which effectively allowed him to garner certificates for those domains.</p>
   <p>I found that this avenue for procuring certificates still exists in at least two mail providers, which means that I was able to get upwards of 2,500 certificates for various domains that I do not own.</p>
-  <p><a href="papers/emailcerts">[...READ MORE...]</a></p>
+  <p><a href="papers/emailcerts.html">[...READ MORE...]</a></p>
 </article>
 
 
 <article>
   <header>
-	  <h1 class="title"><a href="papers/hpkpwn">Bug in Chrome security feature can fill up your hard drive &amp; crash the browser</a></h1>
+	  <h1 class="title"><a href="papers/hpkpwn.html">Bug in Chrome security feature can fill up your hard drive &amp; crash the browser</a></h1>
 	  <time class="pubdate" datetime="2014-02-20">2014-02-20</time>
 
   </header>
   <p>The security feature in question is one that I have <a target="_blank" href="20121201-cert-pinning.html">talked about before</a>: HTTP Public Key Pinning (<a target="_blank" href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning">HPKP</a>). This feature allows a website to tell the browser only to connect to the site if it is using a particular set of SSL certificates. For example, a site can specify that the browser only use a particular CA (certificate authority) or set of CAs when communicating with its servers.</p>
   <p>On to <a target="_blank" href="https://code.google.com/p/chromium/issues/detail?id=316032">the bug</a>...</p>
   <p>Without <a target="_blank" href="https://codereview.chromium.org/86043003/">this patch</a> an evil website has the ability to fill up your hard drive, or at least up to about 16 <a target="_blank" href="http://en.wikipedia.org/wiki/Exabyte">exabytes</a>.</p>
-  <p><a href="papers/hpkpwn">[...READ MORE...]</a></p>
+  <p><a href="papers/hpkpwn.html">[...READ MORE...]</a></p>
 
 </article>
 
