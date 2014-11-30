@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <atom:link href="https://www.cem.me/cem.rss" rel="self" type="application/rss+xml" />
+        <title>cem - Carl Mehner's Blog</title>
+      <link>https://www.cem.me/</link>
+      <description>Carl Mehner's Blog on Security, PKI, and computers</description>
+      <language>en-us</language>
+      <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+      <generator>by hand in vim</generator>
+      <managingEditor>c+blog@cem.me (Carl Mehner)</managingEditor>
+      <webMaster>c+blog@cem.me (Carl Mehner)</webMaster>
+
+    <item>
+        <title>iOS 8.1 and CVE-2014-4449</title>
+        <link>https://www.cem.me/papers/cve-2014-4449</link>
+        <description><![CDATA[
+  <p>Today, Apple released security advisory <a href="http://support.apple.com/en-us/HT203119" target="_blank">APPLE-SA-2014-10-20-1</a> for iOS 8.1 that includes <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4449" target="_blank">CVE-2014-4449</a>.</p>
+  <p>This relates to a TLS certificate validation vulnerability in the clients accessing iCloud affecting bookmarks, calendar, tasks, and possibly other data types allowing for modification and disclosure of data.</p>
+  <p>Exposure of sensitive reminders, meetings, bookmarks (including bookmarklets that could allow logins to other saved websites). Users may store sensitive data within these data objects that are synced to iCloud, these are at risk of exposure through this vulnerability.</p>
+  <dl>
+  <dt><b>Data Disclosed Includes:</b></dt>
+  <dd>User Display Name</dd>
+  <dd>Apple DAV Push Token</dd>
+  <dd>Owner ID</dd>
+  <dd>X-MobileMe-Auth Token (encoded in b64, prepended Owner ID)</dd>
+  <dd>Push Key (prepended Owner ID)</dd>
+  <dd>DAV Sync Token</dd>
+  <dd>
+   <dl>
+    <dt><b>The full gziped text of the following data types:</b></dt>
+    <dd>Reminders</dd>
+    <dd>Calendar Events</dd>
+    <dd>Safari Bookmarks</dd>
+   </dl>
+  </dd>
+  </dl>
+  
+  <dl>
+  <dt><b>Connections not validated include:</b></dt>
+  <dd>p11-caldav.icloud.com</dd>
+  <dd>p11-bookmarks.icloud.com</dd>
+  </dl>
+  <pre>
+<code>
+Vulnerability Disclosure Timeline:
+==================================
+2014-07-15:     Researcher discovery
+2014-07-16:     Vendor Notification
+2014-07-17:     Vendor Confirmation of reciept of report
+2014-10-02:     Vendor Response/Feedback
+2014-10-20:     Vendor Fix/Patch
+2014-10-20:     Public Disclosure
+
+Impact
+==================================
+CVSS Severity (version 2.0):
+CVSS v2 Base Score: 6.8 (MEDIUM)
+Impact Subscore: 6.4
+Exploitability Subscore: 8.6
+CVSS Version 2 Metrics:
+Access Vector: Network exploitable
+Access Complexity: Medium
+Authentication: Not required to exploit
+Impact Type: Allows unauthorized disclosure of
+    information; Allows unauthorized modification;
+    Allows disruption of service
+</code>
+  </pre>
+
+  <p><i>--speculation ahead--</i><br />According to <a href="https://www.youtube.com/watch?v=cwmmLRUYaQ8" target="_blank">ElcomSoft</a>, a Russian mobile forensics company, the data gathered from the MobileMe-Auth Token might be able to be used to get additional authentication tokens as well as a number of other interesting things like iOS iCloud backups. These are encrypted using retrievable keys that are also stored in the cloud.</p>
+  <p>So, assumedly, one executing an attack on CVE-2014-4449, would have the ability to not only see just the data going over the unauthenticated streams to the calendar, reminders, and bookmarks, but also could pivot those authentication keys to download and decrypt backups of iOS devices. Once a backup is retrieved and decrypted the attacker has access to all of the iPhone data using a variety of free or paid tools for forensic analysis.</p>
+
+  ]]>
+        </description>
+        <pubDate>Mon, 20 Oct 2014 12:30:00 GMT</pubDate>
+        <guid>http://liftoff.msfc.nasa.gov/2003/06/03.html#item573</guid>
+        </item>
+
+   </channel>
+</rss>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>cem - Cert Pinning</title>
+	<meta name="author" content="Carl Mehner">
+    
+	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="cem.css" />
+	
+</head>
+
+<body>
+
+<header>
+	<nav>
+		<ul>
+			<li><a href="/index.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII=" alt="cem.me" />
+            </a></li>
+			<li><a href="all.html">index</a></li>
+			<li><a href="about.html">about</a></li>
+			<li><a href="https://plus.google.com/u/0/115606090533118002214?prsrc=3&amp;rel=me" rel="publisher" target="_top" >
+				<img src="https://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" class="glogo" />
+			</a></li>
+		</ul>
+	</nav>
+    
+<section id="topTitle">
+  <p>&nbsp;</p><img class=mainLogo src="logo.png" alt="cem.me"/><br /><h2>carl mehner's blog</h2>
+</section>
+
+
+</header>
+
+
+<!-- -above is template for headers and style- -->
+
+
+<article>
+  <header>
+	  <h1 class="title"><a href="#">Certificate Pinning</a></h1>
+	  <time class="pubdate" datetime="2012-12-01">2012-12-01</time>
+
+  </header>
+  <p>Today I created a webapp that allows for sysadmins and security savvy chrome users to add certificate pins to their sites and browser.</p>
+
+<p>Give it a try over at <a target="_blank" href="https://certpins.appspot.com/">https://certpins.appspot.com/</a>.</p>
+<p>Certificate pinning is a way to tell clients what cert or CA they should be seeing when they connect to your website. The tool builds upon the go implementation of cert pinning in the key-pinning draft.</p>
+
+<p><u>Resources:</u><br />
+Current Draft Key Pinning<br />
+&nbsp;&nbsp;<a target="_blank" href="http://tools.ietf.org/html/draft-ietf-websec-key-pinning">http://tools.ietf.org/html/draft-ietf-websec-key-pinning</a><br />
+Adam Langley's Blog Post (where I first learned about pinning certs)<br />
+&nbsp;&nbsp;<a target="_blank" href="http://www.imperialviolet.org/2011/05/04/pinning.html">http://www.imperialviolet.org/2011/05/04/pinning.html</a><br />
+Moxie's post about why you should use key pinning in your mobile apps.<br />
+&nbsp;&nbsp;<a target="_blank" href="http://www.thoughtcrime.org/blog/authenticity-is-broken-in-ssl-but-your-app-ha/">http://www.thoughtcrime.org/blog/authenticity-is-broken-in-ssl-but-your-app-ha/</a>
+</p>
+
+The code is at <a target="_blank" href="https://github.com/cem-/certpins">github</a> for review and collaboration.
+
+
+<p><b>EDIT:</b></p>
+<p>I've called this certificate pinning even though the process is key pinning because the app that creates the key pins specifically only takes certificates to make the pins. Regardless of semantics, enjoy the app for creating key pins.</p>
+</article>
+
+
+<footer>
+	<cite>Copyright &copy; Carl Mehner</cite>
+</footer>
+
+</body>
+</html>
+
