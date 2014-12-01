@@ -6,7 +6,6 @@
       <link>https://www.cem.me/</link>
       <description>Carl Mehner's Blog on Security, PKI, and computers</description>
       <language>en-us</language>
-      <docs>http://blogs.law.harvard.edu/tech/rss</docs>
       <generator>by hand in vim</generator>
       <managingEditor>c+blog@cem.me (Carl Mehner)</managingEditor>
       <webMaster>c+blog@cem.me (Carl Mehner)</webMaster>
@@ -74,7 +73,7 @@ Impact Type: Allows unauthorized disclosure of
   ]]>
         </description>
         <pubDate>Mon, 20 Oct 2014 12:30:00 GMT</pubDate>
-        <guid>http://liftoff.msfc.nasa.gov/2003/06/03.html#item573</guid>
+        <guid>https://www.cem.me/papers/cve-2014-4449.html</guid>
         </item>
 
    </channel>
