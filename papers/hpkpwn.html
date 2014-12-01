@@ -62,7 +62,7 @@ goodPin = "pin-sha256=\"nAl0ztNX3ojp7pO4SJAeA3EOJz026W/BIE1sBk8eChY=\""
 pins = "Public-Key-Pins: max-age=31536000; " + goodPin;
 x=0
 # keep the length of the pins header just under 254 KB
-while len(pins) < 254900 :
+while len(pins) &lt; 254900 :
     # create bogus pins
     pins += "; pin-sha256=\"" + str(x).rjust(43, '0') + "=\"";
     x += 1
@@ -71,7 +71,7 @@ print pins
   </code></pre>
   <p>Loading this header into a webserver and pointing Chrome at it causes the browser to store every hash in the provided header. This is desired behavior on the first communication; however, on any subsequent connection Chrome appends the same header to the end of the pin set for the site and writes the new state to disk. Any new visits to the site must first parse this list of pins to determine if the connection is valid under the rules of certificate pinning. Naturally, I decided that one call for 256KB was not quite enough and that a good way to force the browser to make repeated calls to the server was to use a for-loop that creates calls for JavaScript files from my pin-set-corpulent server.</p> 
 
-  <pre></code>
+  <pre><code>
 &lt;script type="text/javascript"&gt;
 function genJsCalls()
 {
@@ -90,7 +90,7 @@ function genJsCalls()
 
   <p>After testing this, I found that it does take a long time to download any substantial amount of data that would possibly cause a space issue on one hard drive. Then, whilst reminiscing about the CRIME vulnerability, I remembered that it took advantage of compressed headers. Compressed headers! For that, we need SPDY, a next-gen server protocol developed by Google. Lucky, the way I constructed the fake headers made them already efficient to compress. The 256KB header in SPDY only takes up about 10 KB on the wire, which means that in only 4096 server responses transferring 40 MB, you can gobble one gigabyte of client disk space.</p>
   <p>However, rather than just trying to fill up a hard drive, one can simply create a denial of service, you only need a trivial 40-80 responses (equating to 20 MB of data over regular TLS or &asymp;0.75 MB over SPDY) to cause significant hangs and/or freezes within Chrome which will take less than one minute. After a sufficient length of time (based on the amount of memory you have), Windows will throw an unhandled exception error. If using long pin lengths (e.g. 1 year, as above) the only remedy is to find and delete the transport security configuration file. This is due to the fact, as security savant Adam Langley <a href="https://code.google.com/p/chromium/issues/detail?id=320308#c6" target="_blank">has</a> <a href="https://code.google.com/p/chromium/issues/detail?id=316032#c12" target="_blank">confirmed</a> the patch does not re-parse the transport security file to remove existing duplicates.</p>
-  <p>Google <a href="https://src.chromium.org/viewvc/chrome/trunk/src/net/http/http_security_headers.cc?r1=209290&r2=237168&pathrev=237168" target="_blank">has fixed this issue</a> in Chrome 33 which was released on the main <a href="http://googlechromereleases.blogspot.com/2014/02/stable-channel-update_20.html" target="_blank">Stable Channel</a> and <a href="http://googlechromereleases.blogspot.com/2014/02/chrome-beta-for-android-update_20.html" targe"_blank">Android</a> on 2014-02-20, the fix reached the <a href="http://googlechromereleases.blogspot.com/2014/02/chrome-for-ios-update_18.html" target="_blank">iOS</a> stable codebase first, on 2014-02-18.</p>
+  <p>Google <a href="https://src.chromium.org/viewvc/chrome/trunk/src/net/http/http_security_headers.cc?r1=209290&amp;r2=237168&amp;pathrev=237168" target="_blank">has fixed this issue</a> in Chrome 33 which was released on the main <a href="http://googlechromereleases.blogspot.com/2014/02/stable-channel-update_20.html" target="_blank">Stable Channel</a> and <a href="http://googlechromereleases.blogspot.com/2014/02/chrome-beta-for-android-update_20.html" target="_blank">Android</a> on 2014-02-20, the fix reached the <a href="http://googlechromereleases.blogspot.com/2014/02/chrome-for-ios-update_18.html" target="_blank">iOS</a> stable codebase first, on 2014-02-18.</p>
   <p>Now that Google has fixed this issue, find at least two certificates (one to pin and one as a backup), head over to <a href="https://certpins.appspot.com/" target="_blank">https://certpins.appspot.com</a>, and create your HPKP-pins to add to your site headers!</p>
   <p>That <a href="https://certpins.appspot.com/" target="_blank">website</a>, is an open source webapp that I created to assist in the creation of public key pins from existing SSL certificates.</p>
 
@@ -102,7 +102,7 @@ function genJsCalls()
 
 <footer>
 	<cite>
-		<a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss' class="feedly"  target='blank'><img id='feedlyFollow' src='art/fd.png' alt='follow me in feedly'></a>
+		<a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss' class="feedly"  target='blank'><img id='feedlyFollow' src='../art/fd.png' alt='follow me in feedly'></a>
 		Copyright &copy; Carl Mehner</cite>
 </footer>
 
