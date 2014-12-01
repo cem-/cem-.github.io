@@ -5,8 +5,9 @@
       <title>CeM - Carl Mehner's Blog</title>
       <link>https://www.cem.me/</link>
       <image>
+        <title>CeM - Carl Mehner's Blog</title>
         <url>https://www.cem.me/favicon.png</url>
-        <link>https://www.cem.me/index.html</link>
+        <link>https://www.cem.me/</link>
       </image>
       <description>Carl Mehner's Blog on Security, PKI, and computers</description>
       <language>en-us</language>
