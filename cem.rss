@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <atom:link href="https://www.cem.me/cem.rss" rel="self" type="application/rss+xml" />
-        <title>cem - Carl Mehner's Blog</title>
+        <title>CeM - Carl Mehner's Blog</title>
       <link>https://www.cem.me/</link>
       <description>Carl Mehner's Blog on Security, PKI, and computers</description>
       <language>en-us</language>
@@ -13,7 +13,7 @@
 
     <item>
         <title>iOS 8.1 and CVE-2014-4449</title>
-        <link>https://www.cem.me/papers/cve-2014-4449</link>
+        <link>https://www.cem.me/papers/cve-2014-4449.html</link>
         <description><![CDATA[
   <p>Today, Apple released security advisory <a href="http://support.apple.com/en-us/HT203119" target="_blank">APPLE-SA-2014-10-20-1</a> for iOS 8.1 that includes <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4449" target="_blank">CVE-2014-4449</a>.</p>
   <p>This relates to a TLS certificate validation vulnerability in the clients accessing iCloud affecting bookmarks, calendar, tasks, and possibly other data types allowing for modification and disclosure of data.</p>
