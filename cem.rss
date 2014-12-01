@@ -1,9 +1,13 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <atom:link href="https://www.cem.me/cem.rss" rel="self" type="application/rss+xml" />
-        <title>CeM - Carl Mehner's Blog</title>
+      <atom:link href="https://www.cem.me/cem.rss" rel="self" type="application/rss+xml" />
+      <title>CeM - Carl Mehner's Blog</title>
       <link>https://www.cem.me/</link>
+      <image>
+        <url>https://www.cem.me/favicon.png</url>
+        <link>https://www.cem.me/index.html</link>
+      </image>
       <description>Carl Mehner's Blog on Security, PKI, and computers</description>
       <language>en-us</language>
       <generator>by hand in vim</generator>
