@@ -28,7 +28,7 @@
 	</nav>
     
 <section id="topTitle">
-  <p>&nbsp;</p><img class=mainLogo src="logo.png" alt="cem.me"/><br /><h2>carl mehner's blog</h2>
+	<p>&nbsp;</p><a href="https://www.cem.me/index.html"><img class=mainLogo src="logo.png" alt="cem.me"/></a><br /><h2>carl mehner's blog</h2>
 </section>
 
 
@@ -36,6 +36,27 @@
 
 
 <!-- -above is template for headers and style- -->
+
+<article>
+  <header>
+	  <h1 class="title"><a href="20141203-hdva.html">HTTP DANE Validation Assertion</a></h1>
+	  <time class="pubdate" datetime="2014-12-03">2014-12-03</time>
+  </header>
+
+
+  <p>Certificates are typically authenticated via a chain of signatures that lead back to any one of a number of trusted roots. DNSSEC is validated much the same way, however, with DNSSEC there's only one root for delegating authority for the DNS while in certificates, any certificate authority can sign a certificate valid for any domain. There is a way to use this delegated system to verify connections made over TLS called DANE. In short, DANE is a way to use the DNSSEC to get signed records from an authoritative source to validate certificates used in TLS. You can see a great introduction to DANE by the working group co-chair here:<br /> <a target="_blank" href="https://www.youtube.com/watch?v=emDxUQl1NvA">https://www.youtube.com/watch?v=emDxUQl1NvA</a><br /> Also, some recent slides from a presentation by Dan York are here: <br /><a target="_blank" href="http://www.slideshare.net/Deploy360/3-dnssec-and-dane-ion-tokyo">http://www.slideshare.net/Deploy360/3-dnssec-and-dane-ion-tokyo</a>.</p>
+
+  <p>In all things there is risk, there are ways to mitigate risk using controls, some are detective controls (CT) some are preventative (DANE, Public Key Pinning). Other's have developed many different ideas in how to ensure that the certificate that makes it to the client's browser is the one which the site owner intended. Some have done analysis of the different methods [<a target="_blank" href="https://mediatum.ub.tum.de/node?id=1182735">Ralph Holz</a>][<a target="_blank" href="http://queue.acm.org/detail.cfm?id=2668154">Ben Laurie</a>][<a target="_blank" href="http://www.scriptjunkie.us/2013/12/a-comparison-of-https-reforms/">Matt Weeks</a>]. A <a target="_blank" href="http://www.securityweek.com/convergence-replacement-throwdown-dane-vs-tack-vs-ct">SecurityWeek</a> article today even positions CT as a replacement for the preventive controls of TACK and DANE. I like certificate transparency (CT) as a way to detect CA compromise, but that is only after the fact (somthing I think that is not quite pointed out in the comparison chart at <a target="_blank" href="http://www.certificate-transparency.org/comparison">certificate-transparency.org</a> or in Ben's ACM article from above). However, for a real-time preventitive control, I prefer DANE.</p>
+  <hr />
+<p>Recently, I uploaded a draft to the IETF with the goal of furthering the adoption of DANE.<br />
+<a target="_blank" href="https://datatracker.ietf.org/doc/draft-cem-dane-assertion/">https://datatracker.ietf.org/doc/draft-cem-dane-assertion/</a></p>
+
+<p>Currently the adoption of DANE is lacking in browsers. The draft I wrote is to allow particular sites to declare themselves as ready to support DANE so that they can further lock down the security of their TLS connections. The method is to use an HTTP "Dane-Validation-Assertion" header or HDVA. I envision this as working as follows: A site sends the DVA header to a browser that tells the browser the browser will then do a lookup over DNSSEC for a TLSA (DANE) record to perform additional validations on the certificate.</p>
+
+<p>Options for this header include the max time to keep/remember the assertion, a way to include subdomains, and a way to require a valid DANE response before continuing. The max-age and include-subdomains are used in the same manner as HTTP Strict Transport Security (HSTS</a>) and HTTP Public Key Pinning (HPKP</a>), the '<a href="http://tools.ietf.org/html/draft-cem-dane-assertion-00#section-2.1.3" target="_blank">require</a>' however, is a concept specific HDVA. The reason I included this directive was because the way DANE works; if you receive a certificate that is valid through the regular means of validating using certificate authorities (PKIX) and do not receive any DANE records, the connection will continue. By using the 'require' directive, the server operator forces the connection to be validated using the traditional method of CAs accompanied by DANE or solely by using DANE.</p>
+
+
+</article>
 
 <article>
   <header>
