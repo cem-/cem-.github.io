@@ -28,7 +28,7 @@
 	</nav>
     
 <section id="topTitle">
-	<p>&nbsp;</p><a href="https://www.cem.me/index.html"><img class=mainLogo src="logo.png" alt="cem.me"/></a><br /><h2>carl mehner's blog</h2>
+	<p>&nbsp;</p><a href="https://www.cem.me/index.html"><img class=mainLogo src="art/cem.svg" alt="cem.me"/></a><br /><h2>carl mehner's blog</h2>
 </section>
 
 
@@ -36,6 +36,24 @@
 
 
 <!-- -above is template for headers and style- -->
+
+
+<article>
+  <header>
+	  <h1 class="title"><a href="20141221-cert-binaries.html">Certificate Binary Posters (Part One)</a></h1>
+	  <time class="pubdate" datetime="2012-12-21">2014-12-21</time>
+
+  </header>
+  <p>To better understand the ins and outs of TLS certificates and the way they are stored in files, I decided to do a short series on the different PKCS (Public Key Cryptography Standards) that dissects each individual byte of the certificate or key file. This is part one which covers the public and private keys stored in the PKCS #1 format.</p>
+  <p>The core and heart of a certificate are keys. Certificates utilize both public and private keys which are mathematically bound. The PKCS #1 standard includes both public and private key formats. The first step is to create the private key. Here is the way it's represented: on the top left - the binary file encoded in base64 (easiest for emailing or copy-pasting), below that - expanded into binary, and on the right - each byte expanded into what it means.</p>
+  <a href="https://picasaweb.google.com/lh/photo/IBaE8vtc37W87HHgASU7l9MTjNZETYmyPJy0liipFm0?feat=embedwebsite"><img src="https://lh5.googleusercontent.com/-71toRXOy-DI/VBPdlb4knJI/AAAAAAAAE7I/r8eBViG6z7E/s800/private%2520key.png" alt="private key" /></a>
+  <p>The p and q are two random primes, e is an exponent used as part of the math, the value of e is typically the same across all certs. All of the other values are calculated based off of p, q, e and specific mathematical functions. n is the result of multiplying p and q, d is equal to e<sup>-1</sup> &#37; (n - (p + q -1)), all the other formulas are noted on the chart. The calculated values are all used extensively during crypto operations and are stored in the file to make those crypto operations faster.</p>
+  <p>The public key, as stored in the PKCS#1 format starts off with a wrapper of two main sections, a descriptor of the algorithm and second, the bits in the public key. The descriptor holds the OID (Object IDentifier) of the encryption algorithm for which this key is to be used. The key includes same values that may look familiar: n and e, the multiplied primes used as the modulus and the exponent the message to encrypt is raised to the power of when encrypting.</p>
+  <a href="https://picasaweb.google.com/lh/photo/8gkuddZIn1OAONZx9KQzltMTjNZETYmyPJy0liipFm0?feat=embedwebsite"><img src="https://lh4.googleusercontent.com/-C40S_qivW34/VAZ_50rqpmI/AAAAAAAAE4Q/16xE0X3FsY0/s800/public%2520key.png" alt="public key" /></a>
+
+</article>
+
+
 
 <article>
   <header>
@@ -53,7 +71,7 @@
 <img src="art/hdva.svg" alt="hdva" />
 <p>Currently the adoption of DANE is lacking in browsers. The draft I wrote is to allow particular sites to declare themselves as ready to support DANE so that they can further lock down the security of their TLS connections. The method is to use an HTTP "Dane-Validation-Assertion" header or HDVA. I envision this as working as follows: A site sends the DVA header to a browser that tells the browser the browser will then do a lookup over DNSSEC for a TLSA (DANE) record to perform additional validations on the certificate.</p>
 
-<p>Options for this header include the max time to keep/remember the assertion, a way to include subdomains, and a way to require a valid DANE response before continuing. The max-age and include-subdomains are used in the same manner as HTTP Strict Transport Security (HSTS</a>) and HTTP Public Key Pinning (HPKP</a>), the '<a href="http://tools.ietf.org/html/draft-cem-dane-assertion-00#section-2.1.3" target="_blank">require</a>' however, is a concept specific HDVA. The reason I included this directive was because the way DANE works; if you receive a certificate that is valid through the regular means of validating using certificate authorities (PKIX) and do not receive any DANE records, the connection will continue. By using the 'require' directive, the server operator forces the connection to be validated using the traditional method of CAs accompanied by DANE or solely by using DANE.</p>
+<p>Options for this header include the max time to keep/remember the assertion, a way to include subdomains, and a way to require a valid DANE response before continuing. The max-age and include-subdomains are used in the same manner as HTTP Strict Transport Security (<a href="https://tools.ietf.org/html/rfc6797">HSTS</a>) and HTTP Public Key Pinning (<a href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning">HPKP</a>), the '<a href="http://tools.ietf.org/html/draft-cem-dane-assertion-00#section-2.1.3" target="_blank">require</a>' however, is a concept specific HDVA. The reason I included this directive was because the way DANE works; if you receive a certificate that is valid through the regular means of validating using certificate authorities (PKIX) and do not receive any DANE records, the connection will continue. By using the 'require' directive, the server operator forces the connection to be validated using the traditional method of CAs accompanied by DANE or solely by using DANE.</p>
 
 
 </article>
@@ -175,7 +193,7 @@ Impact Type: Allows unauthorized disclosure of
   <p>Which brings me back to forcing users to engage in risky behavior. The way that you 'install' Intro, is to first, go to the Intro website rather than the app store. One of iOS's most lauded features is that it is kept more secure only allowing apps from the app store. Getting an app or 'app' from elsewhere should raise red flags.</p>
   <p>Next, you enter in your Gmail/iCloud/Yahoo/AOL/etc. email password, on LinkedIn's site. You should not enter your password for one site on another. It is reasonable for sites to want functionality that would normally need other sites credentials, but this is why things like <a target="_blank" href="http://en.wikipedia.org/wiki/OAuth">oAuth</a> and <a target="_blank" href="http://en.wikipedia.org/wiki/SAML_2.0">SAML</a> were created.</p>
   <p>Next, you are required to install a <a target="_blank" href="https://developer.apple.com/library/ios/featuredarticles/iPhoneConfigurationProfileRef/">configuration profile</a>. Configuration profiles very useful for giving corporations access to a phone. As <a target="_blank" href="http://www.bishopfox.com/blog/2013/10/linkedin-intro/">Bishop Fox said</a>, "A profile can be used to wipe your phone, install applications, delete applications, restrict functionality, and a whole heap of other things". Users should only install these profiles if they truly understand what they do, or are required to by their company.</p>
-  <p>Also, using this method, there is a set of certificates installed by the mobile config profile. This is a further potential avenue for compromise in a malicious setting. Configuration profiles in iOS are powerful things, training users to install them can lead to making it a lot easier to pull off a social engineering trick, similar to what I described in my <a target="_blank" href="https://drive.google.com/viewerng/viewer?a=v&pid=sites&srcid=Y2VtLm1lfGJsb2d8Z3g6N2E5YTM1YzllMTYxZDA3Mg">BSides San Antonio talk</a> (starting slide 26).</p>
+  <p>Also, using this method, there is a set of certificates installed by the mobile config profile. This is a further potential avenue for compromise in a malicious setting. Configuration profiles in iOS are powerful things, training users to install them can lead to making it a lot easier to pull off a social engineering trick, similar to what I described in my <a target="_blank" href="https://drive.google.com/viewerng/viewer?a=v&amp;pid=sites&amp;srcid=Y2VtLm1lfGJsb2d8Z3g6N2E5YTM1YzllMTYxZDA3Mg">BSides San Antonio talk</a> (starting slide 26).</p>
   <p>Make the Internet a better place: as a website/app/service provider you should choose an architecture using methods that propagate more secure, rather than risky, behavior.</p>
   <p>Happy Cyber Security Awareness Month</p>
   <p>-cem</p>
