@@ -15,14 +15,34 @@
       <managingEditor>c+blog@cem.me (Carl Mehner)</managingEditor>
       <webMaster>c+blog@cem.me (Carl Mehner)</webMaster>
 
+
+      <item>
+        <title>Certificate Binary Posters (Part Four)</title>
+        <link>https://www.cem.me/20150209-cert-binaries-4.html</link>
+	<description><![CDATA[
+
+  <p><small>If you missed the previous posts, you may want to read them first (<a href="https://www.cem.me/20141221-cert-binaries.html">Part One</a>, <a href="https://www.cem.me/20150104-cert-binaries-2.html">Part Two</a>, <a href="https://www.cem.me/20150121-cert-binaries-3.html">Part Three</a>)</small></p>
+  <p>After the certificate authority (CA) receives the <a href="https://www.cem.me/20150121-cert-binaries-3.html">CSR</a>, it signs it, then sends back the TLS cert. You can see two places in this certificate that directly correspond to the CSR (the public key and the DN). There are three main sections within the certificate wrapper: the tbsCertificate data (tbs = to-be-signed), the structure the specifying signature used to sign the cert, and the signature value. The CA crafts the tbsCertificate from the data given in the CSR, adding additional fields before copying the DN and SPKI (subject public key info; aka the PKCS#1 object).</p></p>The tbsCertificate starts out with a version container with a version byte, and as with all of the valid TLS certs trusted on the Internet right now, is version 3 (notice the value of 2 on the left due to the 0-based version index). Next the serial number of the cert which because this is an example is shortened, normally it will be <a href="https://cabforum.org/wp-content/uploads/BRv1.2.3.pdf">at least 20</a> random bits. The next field is byte for byte the same as the certificate's signature algorithm ID mentioned above. Following that, the name of the CA that signed the cert goes to the issuer section. The CA’s DN sequence is copied to the issuer field of any certificates it signs. The CA also controls the validity dates, the UTC time elements are normally set with the start as the current time, or current GMT date at midnight, with the end date set to a max of 3 years and 3 months (or for extended validation (EV) certs 2 years and 3 months). However, they can be set to nearly any date in the future or in the past. Finally, the DN and SPKI are copied from the CSR and tacked on to the end.</p>
+  <p>Up until now, all of the fields are in x.509v1 certificates, the difference between version 1 and version 3 certificates are that v3 includes the extensions section below the SPKI. Extensions allow for, as the word implies, extensibility. You can have as many or as few extensions as are required, they can be marked critical or noncritical. A critical extension must be understood by the validating software, otherwise the certificate validation must fail. There are rules set by the CA / Browser Forum for which extensions are required for inclusion and which to mark as critical. In this example, (which only follows some of the rules) there is an extension requiring the certificate to be an end-entity (that is not a CA) as well as the AKI (authority key identifier). An AKI is a way to tie a specified end-entity certificate to the certificate that issued it.</p>
+  <p>Lastly, the specified signature algorithm uses the CA's private key to sign the bytes from the tbsCertificate, the result is the signature value.</p>
+
+<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6108892262647630978"><img src="https://lh3.googleusercontent.com/-6zdPndot6Iw/VMclJYY-jII/AAAAAAAAF-k/n9btf1nPf_A/s800/x509.png" alt="x.509 certificate" /></a>
+ 
+		]]>
+        </description>
+        <pubDate>Mon, 09 Feb 2015 04:04:04 -0000</pubDate>
+        <guid>https://www.cem.me/20150209-cert-binaries-4.html</guid>
+    </item>
+
+
     <item>
         <title>Certificate Binary Posters (Part Three)</title>
 	<link>https://www.cem.me/20150121-cert-binaries-3.html</link>
 	<description><![CDATA[
-	  <p><small>If you missed the previous posts, you may want to read them first (<a href="20141221-cert-binaries.html">Part One</a>, <a href="20150104-cert-binaries-2.html">Part Two</a>)</small></p>  
+	  <p><small>If you missed the previous posts, you may want to read them first (<a href="https://www.cem.me/20141221-cert-binaries.html">Part One</a>, <a href="https://www.cem.me/20150104-cert-binaries-2.html">Part Two</a>)</small></p>  
   <p>This first part is a building block for more wonderful things to come. The Distinguished Name for x.500 are the basis for identity and trust on the Internet. You may notice that the base64 in the upper left is a certificate request, I highlighted the bytes to pull out of that to show this detailed view in order to clarify this more complex block. Each of the names in the that make up the distinguished name are an ASN.1 'set' containing a 'sequence' of the attribute type and the value of the attribute. The attribute type is an OID (Object IDentifier), a hierarchical structure used to describe namespaces. All of the OIDs here are under the x.500 attribute types namespace. Second within the set, after the OID, is the value associated to it: country, state, local, et seq. This is encoded in the UTF-8 (<b>U</b>niversal Character Set + <b>T</b>ransformation <b>F</b>ormat).</p>
   <a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6105920707666080834"><img src="https://lh4.googleusercontent.com/-gG1aAE7ovog/VLyWiHcjdEI/AAAAAAAAF8U/xzhuasDqrGQ/s800/DNx500.png" alt="x.500 - DN" /></a>
-  <p>The base64 in the top left of this next poster is the same as the last, however, as the last focused on the DN, this focuses on most of the rest. I say most because the sequence immediately following the DN is a PKCS#1 object. This is the same thing I went over at the end of <a href="20141221-cert-binaries.html">part one</a>.</p>
+  <p>The base64 in the top left of this next poster is the same as the last, however, as the last focused on the DN, this focuses on most of the rest. I say most because the sequence immediately following the DN is a PKCS#1 object. This is the same thing I went over at the end of <a href="https://www.cem.me/20141221-cert-binaries.html">part one</a>.</p>
   <p>CSRs are sent to a certificate authority which they then use to produce a signed certificate for use in TLS to secure websites, or any number of other x.509/PKI applications.</p>
   <p>The entire CSR is contained in one large sequence. Within that is a sequence of request data followed by the CSR signature algorithm and lastly the signature value.</p>
   <p>The request data is made up of a version (value of 0, meaning of 1; <small>remember computer scientists count from 0...</small>), the DN above (which specifies the request identification information), after that is the PKCS#1 object (identical to the PKCS#1 public key poster). Lastly is the attributes section, here it is empty. The attributes are defined in a PKCS#9 objects. This field is little used now, but at one point it was used to add passwords that the requestor would have to provide at the time of revocation to authenticate to the revocation system.</p>
@@ -38,7 +58,7 @@
         <title>Certificate Binary Posters (Part Two)</title>
         <link>https://www.cem.me/20141221-cert-binaries-2.html</link>
 	<description><![CDATA[
-  <p><small>If you missed the previous post, you may want to read that first (<a href="20141221-cert-binaries.html">Part One</a>)</small></p>
+  <p><small>If you missed the previous post, you may want to read that first (<a href="https://www.cem.me/20141221-cert-binaries.html">Part One</a>)</small></p>
   <p>The previous post shows one way to store private keys, the PKCS#1 format. This post shows a different format, PKCS#8. This format is more extensible, allowing for more than just the one type of key to be stored. This format splits up the private key representation into three sections: a version, an algorithm identifier, and the actual private key. The version is set at 0, and may eventually change if there are any updates to the standard. The algorithm ID is an OID defined as "RSA Encryption" for use with the PKCS#1 standard. That is to say, the very same standard we went over in the previous post. The last part is a wrapper for the PKCS#1 private key object. This is the exact same thing byte for byte as the PKCS#1 private key.</p>
 
   <a href="https://picasaweb.google.com/lh/photo/6zamMivAFuluJ1V-6_GLW9MTjNZETYmyPJy0liipFm0?feat=embedwebsite"><img src="https://lh6.googleusercontent.com/-okA540VQO9Y/VKoiagfxR5I/AAAAAAAAF6c/19IW110wZek/s800/pkcs8nocrypt.png" alt="private key" /></a>
@@ -59,10 +79,6 @@
         <title>Certificate Binary Posters (Part One)</title>
         <link>https://www.cem.me/20141221-cert-binaries.html</link>
 	<description><![CDATA[
-	  <header>
-	  <h1 class="title"><a href="https://www.cem.me/20141221-cert-binaries.html">Certificate Binary Posters (Part One)</a></h1>
-	  <time class="pubdate" datetime="2012-12-21">2014-12-21</time>
-  </header>
   <p>To better understand the ins and outs of TLS certificates and the way they are stored in files, I decided to do a short series on the different PKCS (Public Key Cryptography Standards) that dissects each individual byte of the certificate or key file. This is part one which covers the public and private keys stored in the PKCS #1 format.</p>
   <p>The core and heart of a certificate are keys. Certificates utilize both public and private keys which are mathematically bound. The PKCS #1 standard includes both public and private key formats. The first step is to create the private key. Here is the way it's represented: on the top left - the binary file encoded in base64 (easiest for emailing or copy-pasting), below that - expanded into binary, and on the right - each byte expanded into what it means.</p>
   <a href="https://picasaweb.google.com/lh/photo/IBaE8vtc37W87HHgASU7l9MTjNZETYmyPJy0liipFm0?feat=embedwebsite"><img src="https://lh5.googleusercontent.com/-71toRXOy-DI/VBPdlb4knJI/AAAAAAAAE7I/r8eBViG6z7E/s800/private%2520key.png" alt="private key" /></a>
