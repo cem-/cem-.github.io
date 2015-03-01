@@ -39,9 +39,22 @@
 
 <article>
   <header>
-	  <h1 class="title"><a href="20150209-cert-binaries-4.html">Certificate Binary Posters (Part Four)</a></h1>
-	  <time class="pubdate" datetime="2014-02-09">2014-02-09</time>
+	  <h1 class="title"><a href="20150301-cert-binaries-5.html">Certificate Binary Posters (Part Five)</a></h1>
+	  <time class="pubdate" datetime="2015-03-01">2015-03-01</time>
+  </header>
+  
+  <p><small>Previous Posts: (<a href="20141221-cert-binaries.html">Part One</a>, <a href="20150104-cert-binaries-2.html">Part Two</a>, <a href="20150121-cert-binaries-3.html">Part Three</a>, <a href="20150209-cert-binaries-4.html">Part Four</a>)</small></p>
+  <p>Certificates used in webservers and other end-entity uses are signed by issuers (which should not be root CAs, but it is possible). However, there are a lot of issuer certificates; in 2010 there were <a href="https://www.eff.org/files/ccc2010.pdf">nearly 1500</a>, now certainly more are out there with <a href="https://letsencrypt.org"/>more planned</a>. Because there are so many undistributed issuing CAs, there needs to be a way for the CA to send the issuer cert to the cert requester along with the end-entity certificate so they can pass that along to anyone that needs to validate their root. One of the common ways to pass public keys for a specific chain is the PKCS #7 format. This format is a way to ensure that the right certificates are used in the chain for the particular server certificate.</p>
+  <p>PKCS #7 begins, as all the others have, with a sequence of the encoded data and length. Immediately following is the OID for PKCS #7 signedData content type. This specifies the type of the content of the p7 object. The content is put into an explicit object that contains a sequence which wraps the object. Inside, the signedData object the structure begins with a version, digest algorithm identifies (empty here), a content info (here specifying the OID for PKCS #7 data), certificates, crls (empty here), and lastly another empty field that can hold additional information on signers.<p>
+  <p>The certificates field is an ASN.1 explicit type wrapper which contains x.509 sequences as they appear in the x.509 posters from <a href="20150209-cert-binaries-4.html">part 4</a>.<p>
+<a href="https://picasaweb.google.com/lh/photo/G4rKFdeylO2MOi7Uk8LtSNMTjNZETYmyPJy0liipFm0?feat=embedwebsite"><img src="https://lh4.googleusercontent.com/-Mty_nrd3MaE/VMclGRFPPqI/AAAAAAAAGDs/A5j19DmJmwI/s800/PKCS7.png" alt="p7b" /></a>
+</article>
 
+
+<article>
+  <header>
+	  <h1 class="title"><a href="20150209-cert-binaries-4.html">Certificate Binary Posters (Part Four)</a></h1>
+	  <time class="pubdate" datetime="2015-02-09">2015-02-09</time>
   </header>
 
   <p><small>If you missed the previous posts, you may want to read them first (<a href="20141221-cert-binaries.html">Part One</a>, <a href="20150104-cert-binaries-2.html">Part Two</a>, <a href="20150121-cert-binaries-3.html">Part Three</a>)</small></p>
@@ -141,58 +154,7 @@
   <p>Today, Apple released security advisory <a href="http://support.apple.com/en-us/HT203119" target="_blank">APPLE-SA-2014-10-20-1</a> for iOS 8.1 that includes <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4449" target="_blank">CVE-2014-4449</a>.</p>
   <p>This relates to a TLS certificate validation vulnerability in the clients accessing iCloud affecting bookmarks, calendar, tasks, and possibly other data types allowing for modification and disclosure of data.</p>
   <p>Exposure of sensitive reminders, meetings, bookmarks (including bookmarklets that could allow logins to other saved websites). Users may store sensitive data within these data objects that are synced to iCloud, these are at risk of exposure through this vulnerability.</p>
-  <dl>
-  <dt><b>Data Disclosed Includes:</b></dt>
-  <dd>User Display Name</dd>
-  <dd>Apple DAV Push Token</dd>
-  <dd>Owner ID</dd>
-  <dd>X-MobileMe-Auth Token (encoded in b64, prepended Owner ID)</dd>
-  <dd>Push Key (prepended Owner ID)</dd>
-  <dd>DAV Sync Token</dd>
-  <dd>
-   <dl>
-    <dt><b>The full gziped text of the following data types:</b></dt>
-    <dd>Reminders</dd>
-    <dd>Calendar Events</dd>
-    <dd>Safari Bookmarks</dd>
-   </dl>
-  </dd>
-  </dl>
-  
-  <dl>
-  <dt><b>Connections not validated include:</b></dt>
-  <dd>p11-caldav.icloud.com</dd>
-  <dd>p11-bookmarks.icloud.com</dd>
-  </dl>
-  <pre>
-<code>
-Vulnerability Disclosure Timeline:
-==================================
-2014-07-15:     Researcher discovery
-2014-07-16:     Vendor Notification
-2014-07-17:     Vendor Confirmation of reciept of report
-2014-10-02:     Vendor Response/Feedback
-2014-10-20:     Vendor Fix/Patch
-2014-10-20:     Public Disclosure
-
-Impact
-==================================
-CVSS Severity (version 2.0):
-CVSS v2 Base Score: 6.8 (MEDIUM)
-Impact Subscore: 6.4
-Exploitability Subscore: 8.6
-CVSS Version 2 Metrics:
-Access Vector: Network exploitable
-Access Complexity: Medium
-Authentication: Not required to exploit
-Impact Type: Allows unauthorized disclosure of
-    information; Allows unauthorized modification;
-    Allows disruption of service
-</code>
-  </pre>
-
-  <p><i>--speculation ahead--</i><br />According to <a href="https://www.youtube.com/watch?v=cwmmLRUYaQ8" target="_blank">ElcomSoft</a>, a Russian mobile forensics company, the data gathered from the MobileMe-Auth Token might be able to be used to get additional authentication tokens as well as a number of other interesting things like iOS iCloud backups. These are encrypted using retrievable keys that are also stored in the cloud.</p>
-  <p>So, assumedly, one executing an attack on CVE-2014-4449, would have the ability to not only see just the data going over the unauthenticated streams to the calendar, reminders, and bookmarks, but also could pivot those authentication keys to download and decrypt backups of iOS devices. Once a backup is retrieved and decrypted the attacker has access to all of the iPhone data using a variety of free or paid tools for forensic analysis.</p>
+  <p><a href="papers/cve-2014-4449.html">...MORE DETAILS...</a></p>
 </article>
 
 
@@ -234,25 +196,6 @@ Impact Type: Allows unauthorized disclosure of
   <p>Without <a target="_blank" href="https://codereview.chromium.org/86043003/">this patch</a> an evil website has the ability to fill up your hard drive, or at least up to about 16 <a target="_blank" href="http://en.wikipedia.org/wiki/Exabyte">exabytes</a>.</p>
   <p><a href="papers/hpkpwn.html">[...READ MORE...]</a></p>
 
-</article>
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="20131028-training-users.html">Training Users to Be More Secure</a></h1>
-	  <time class="pubdate" datetime="2013-10-28">2013-10-28</time>
-
-  </header>
-  <p>One of the things that a corporation, website, or mobile application should do, is in all of its interactions with the users of its services insure that none of the actions that it requests or requires would be something that in a malicious context would compromise the security those users.</p>
-  <p>You should not do things like: have users enter credentials over a non-SSL log-in screen, force users to click through an invalid certificate to get to your site, or use a pseudo-public piece of data for a password (e.g. SSN or birthday).</p>
-  <p>Last week, LinkedIn broke the rule of not requiring the user to engage in risky behavior. The service <a target="_blank" href="http://engineering.linkedin.com/mobile/linkedin-intro-doing-impossible-ios">Intro</a> is described as a <a target="_blank" href="http://blogs.csoonline.com/application-security/2808/linkedin-intro-data-meet-security-issues">bad idea</a> by Dave Lewis <a target="_blank" href="http://threatpost.com/linkedin-intro-app-equivalent-to-man-in-the-middle-attack-experts/">and</a> <a target="_blank" href="http://bits.blogs.nytimes.com/2013/10/24/linkedins-new-mobile-app-called-a-dream-for-attackers/">others</a>, was <a target="_blank" href="http://blog.linkedin.com/2013/10/26/the-facts-about-linkedin-intro/">rebutted</a> by a LinkedIn security manager which sparked a reply by Martin McKeay. Up to now, I have seen many people talking about how bad an idea the system is as a whole, so I will not rehash that part. Instead, I want to focus on the <i>how</i> not the what.</p>
-  <p>Which brings me back to forcing users to engage in risky behavior. The way that you 'install' Intro, is to first, go to the Intro website rather than the app store. One of iOS's most lauded features is that it is kept more secure only allowing apps from the app store. Getting an app or 'app' from elsewhere should raise red flags.</p>
-  <p>Next, you enter in your Gmail/iCloud/Yahoo/AOL/etc. email password, on LinkedIn's site. You should not enter your password for one site on another. It is reasonable for sites to want functionality that would normally need other sites credentials, but this is why things like <a target="_blank" href="http://en.wikipedia.org/wiki/OAuth">oAuth</a> and <a target="_blank" href="http://en.wikipedia.org/wiki/SAML_2.0">SAML</a> were created.</p>
-  <p>Next, you are required to install a <a target="_blank" href="https://developer.apple.com/library/ios/featuredarticles/iPhoneConfigurationProfileRef/">configuration profile</a>. Configuration profiles very useful for giving corporations access to a phone. As <a target="_blank" href="http://www.bishopfox.com/blog/2013/10/linkedin-intro/">Bishop Fox said</a>, "A profile can be used to wipe your phone, install applications, delete applications, restrict functionality, and a whole heap of other things". Users should only install these profiles if they truly understand what they do, or are required to by their company.</p>
-  <p>Also, using this method, there is a set of certificates installed by the mobile config profile. This is a further potential avenue for compromise in a malicious setting. Configuration profiles in iOS are powerful things, training users to install them can lead to making it a lot easier to pull off a social engineering trick, similar to what I described in my <a target="_blank" href="https://drive.google.com/viewerng/viewer?a=v&amp;pid=sites&amp;srcid=Y2VtLm1lfGJsb2d8Z3g6N2E5YTM1YzllMTYxZDA3Mg">BSides San Antonio talk</a> (starting slide 26).</p>
-  <p>Make the Internet a better place: as a website/app/service provider you should choose an architecture using methods that propagate more secure, rather than risky, behavior.</p>
-  <p>Happy Cyber Security Awareness Month</p>
-  <p>-cem</p>
 </article>
 
 
