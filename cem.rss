@@ -15,15 +15,43 @@
       <managingEditor>c+blog@cem.me (Carl Mehner)</managingEditor>
       <webMaster>c+blog@cem.me (Carl Mehner)</webMaster>
 
+   <item>
+        <title>>Certificate Binary Posters (Part Six)</title>
+	<link>https://www.cem.me/20150315-cert-binaries-6.html#cem</link>
+	<description><![CDATA[
+		<p>One thing that is <a href="https://www.cem.me/20141221-cert-binaries.html">noticeably</a>, <a href="https://www.cem.me/20150104-cert-binaries-2.html">different</a>, <a href="https://www.cem.me/20150121-cert-binaries-3.html">from</a>, <a href="https://www.cem.me/20150209-cert-binaries-4.html">previous</a>, <a href="https://www.cem.me/20150301-cert-binaries-5.html">posters</a> is that these format are not encoded in base64, they are binary files. Most of the other files can be interpreted by cryptosystems in both binary and base64, and we typically transport them by first encoding them in base64.</p>
+		<p>In these formats, in order to show the binary in a visual representation I used <a href="https://en.wikipedia.org/wiki/Netpbm_format#PGM_example">Netpbm</a> (<b>Net</b>work <b>p</b>ortable <b>b</b>itmap for<b>m</b>at) with the PGM (<b>P</b>ortable <b>G</b>ray<b>m</b>ap) format to translate the hexadecimal values into a format easier for humans to visualize. (A more fun format would be to <a href="https://gist.github.com/windytan/7910910/">use emoji</a>, but that would not fit quite as well with the rest of the poster).</p>
+<img src="https://www.cem.me/art/emoji.png" alt="emoji pfx" />vs<img src="https://www.cem.me/art/pgm.png" alt="pgm jks" />
+<p>Microsoft came up with the pfx format (which was later changed slightly and reworked as PKCS &#35;12), and recieved <a href="https://www.cs.auckland.ac.nz/~pgut001/pubs/pfx.html">much criticism</a> due to the complex nature, terminology, and internal formats. At first glance the p12 format seems to be fairly complex, it includes many wrappers of wrappers that enclose keys, certificates, and descriptive data. The reason for all of those is that pfx files can contain (according to Gutmann), "CRL's, keys, names, cookie recipes, dirty laundry, spare lightbulbs, and the kitchen sink". However, for storing certificates and a private key in pfx, it is really just a list of pairs of encrypted certificate chain and the associated encrypted key. </p>
+<p>The keys and certificates in the pfx are stored in separate containers and encrypted with different keys and most of the time different algorithms also.</p>
+<p>When using Windows, there really is no way around the algorithm used. The default is to encrypt the certificates with RC2 and the private key with 3DES, this means that the highest strength you would ever be able to achieve is equivalent to 3DES. However, on OpenSSL, you can specify the encryption algorithm for both the key and the certificates to use the stronger AES-256 by adding additional flags:<br />
+<code>-certpbe AES-256-CBC -keypbe AES-256-CBC</code></p>
+<p>Of course, at the moment, the strength is predominantly up to the password used as the best way to defeat even the Windows version is to use a password list. This is somewhat slowed by the number of rounds the key derivation algorithm is passed through; 2000 on pfx files generated via Windows and 2048 by default from OpenSSL.</p>
+
+<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6126635201442771314"><img src="https://lh6.googleusercontent.com/-rrlIl-yMdis/VQYuQWJmcXI/AAAAAAAAGGM/H2J-MCRKurM/s800/p12.png" alt="pfx"/></a>
+
+<p>Java has its own proprietary format that it named JKS, which stands for Java KeyStore.</p> <p>While the p12 format is binary encoded ASN.1, jks format files are a strange mix of binary and ASN.1. The file begins with a "magic number" as <a href="http://en.wikipedia.org/wiki/List_of_file_signatures">many other</a> binary files do. After that comes a list of different keys or certificates. JKS files are also quite extensible and are able to hold many objects, including lists of chains, certificates, roots, as well as lone private keys. The number of keystore entries is defined at the beginning of the file and the data is listed in a serialized manner. For this example of just an x.509 certificate and key, the entry contains: a plaintext alias, encrypted private key, and plaintext chain.</p>
+<p>Unlike pkcs12, you cannot choose the algorithm used to protect the keys, so everyone is stuck with a proprietary implementation of a password based key derivation scheme using MD5 to create a 3DES key. </p>
+
+<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6126635193771531266"><img src="https://lh6.googleusercontent.com/-eK-jRz45vyY/VQYuP5konAI/AAAAAAAAGGI/Uk5pMfTQYW0/s800/jks.png" alt="jks" /></a>
+
+<p>The moral of the story, is use a long and complex password for either of these formats. Even so, if your keystore does get out, you will need to revoke your certificate. More on that next post.</p>
+
+		]]>
+        </description>
+        <pubDate>Mon, 16 Mar 2015 03:16:16 -0000</pubDate>
+        <guid>https://www.cem.me/20150315-cert-binaries-6.html</guid>
+    </item>
+
     <item>
         <title>Certificate Binary Posters (Part Five)</title>
-        <link>https://www.cem.me/20150301-cert-binaries-5.html</link>
+	<link>https://www.cem.me/20150301-cert-binaries-5.html#cem</link>
 	<description><![CDATA[
 <p><small>Previous Posts: (<a href="https://www.cem.me/20141221-cert-binaries.html">Part One</a>, <a href="https://www.cem.me/20150104-cert-binaries-2.html">Part Two</a>, <a href="https://www.cem.me/20150121-cert-binaries-3.html">Part Three</a>, <a href="https://www.cem.me/20150209-cert-binaries-4.html">Part Four</a>)</small></p>
   <p>Certificates used in webservers and other end-entity uses are signed by issuers (which should not be root CAs, but it is possible). However, there are a lot of issuer certificates; in 2010 there were <a href="https://www.eff.org/files/ccc2010.pdf">nearly 1500</a>, now certainly more are out there with <a href="https://letsencrypt.org">more planned</a>. Because there are so many undistributed issuing CAs, there needs to be a way for the CA to send the issuer cert to the cert requester along with the end-entity certificate so they can pass that along to anyone that needs to validate their root. One of the common ways to pass public keys for a specific chain is the PKCS #7 format. This format is a way to ensure that the right certificates are used in the chain for the particular server certificate.</p>
   <p>PKCS #7 begins, as all the others have, with a sequence of the encoded data and length. Immediately following is the OID for PKCS #7 signedData content type. This specifies the type of the content of the p7 object. The content is put into an explicit object that contains a sequence which wraps the object. Inside, the signedData object the structure begins with a version, digest algorithm identifies (empty here), a content info (here specifying the OID for PKCS #7 data), certificates, crls (empty here), and lastly another empty field that can hold additional information on signers.<p>
   <p>The certificates field is an ASN.1 explicit type wrapper which contains x.509 sequences as they appear in the x.509 posters from <a href="https://www.cem.me/20150209-cert-binaries-4.html">part 4</a>.<p>
-  <a href="https://picasaweb.google.com/lh/photo/G4rKFdeylO2MOi7Uk8LtSNMTjNZETYmyPJy0liipFm0?feat=embedwebsite"><img src="https://lh4.googleusercontent.com/-Mty_nrd3MaE/VMclGRFPPqI/AAAAAAAAGDs/A5j19DmJmwI/s800/PKCS7.png"  alt="p7b" /></a>
+  <a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6108892209146183330"><img src="https://lh4.googleusercontent.com/-Mty_nrd3MaE/VMclGRFPPqI/AAAAAAAAGDs/A5j19DmJmwI/s800/PKCS7.png"  alt="p7b" /></a>
 		]]>
         </description>
         <pubDate>Sun, 01 Mar 2015 06:00:00 -0000</pubDate>
@@ -32,7 +60,7 @@
 
     <item>
         <title>Certificate Binary Posters (Part Four)</title>
-        <link>https://www.cem.me/20150209-cert-binaries-4.html</link>
+        <link>https://www.cem.me/20150209-cert-binaries-4.html#cem</link>
 	<description><![CDATA[
 
   <p><small>If you missed the previous posts, you may want to read them first (<a href="https://www.cem.me/20141221-cert-binaries.html">Part One</a>, <a href="https://www.cem.me/20150104-cert-binaries-2.html">Part Two</a>, <a href="https://www.cem.me/20150121-cert-binaries-3.html">Part Three</a>)</small></p>
@@ -51,7 +79,7 @@
 
     <item>
         <title>Certificate Binary Posters (Part Three)</title>
-	<link>https://www.cem.me/20150121-cert-binaries-3.html</link>
+	<link>https://www.cem.me/20150121-cert-binaries-3.html#</link>
 	<description><![CDATA[
 	  <p><small>If you missed the previous posts, you may want to read them first (<a href="https://www.cem.me/20141221-cert-binaries.html">Part One</a>, <a href="https://www.cem.me/20150104-cert-binaries-2.html">Part Two</a>)</small></p>  
   <p>This first part is a building block for more wonderful things to come. The Distinguished Name for x.500 are the basis for identity and trust on the Internet. You may notice that the base64 in the upper left is a certificate request, I highlighted the bytes to pull out of that to show this detailed view in order to clarify this more complex block. Each of the names in the that make up the distinguished name are an ASN.1 'set' containing a 'sequence' of the attribute type and the value of the attribute. The attribute type is an OID (Object IDentifier), a hierarchical structure used to describe namespaces. All of the OIDs here are under the x.500 attribute types namespace. Second within the set, after the OID, is the value associated to it: country, state, local, et seq. This is encoded in the UTF-8 (<b>U</b>niversal Character Set + <b>T</b>ransformation <b>F</b>ormat).</p>
@@ -70,7 +98,7 @@
 
     <item>
         <title>Certificate Binary Posters (Part Two)</title>
-        <link>https://www.cem.me/20141221-cert-binaries-2.html</link>
+        <link>https://www.cem.me/20141221-cert-binaries-2.html#cem</link>
 	<description><![CDATA[
   <p><small>If you missed the previous post, you may want to read that first (<a href="https://www.cem.me/20141221-cert-binaries.html">Part One</a>)</small></p>
   <p>The previous post shows one way to store private keys, the PKCS#1 format. This post shows a different format, PKCS#8. This format is more extensible, allowing for more than just the one type of key to be stored. This format splits up the private key representation into three sections: a version, an algorithm identifier, and the actual private key. The version is set at 0, and may eventually change if there are any updates to the standard. The algorithm ID is an OID defined as "RSA Encryption" for use with the PKCS#1 standard. That is to say, the very same standard we went over in the previous post. The last part is a wrapper for the PKCS#1 private key object. This is the exact same thing byte for byte as the PKCS#1 private key.</p>
@@ -91,7 +119,7 @@
 
     <item>
         <title>Certificate Binary Posters (Part One)</title>
-        <link>https://www.cem.me/20141221-cert-binaries.html</link>
+        <link>https://www.cem.me/20141221-cert-binaries.html#cem</link>
 	<description><![CDATA[
   <p>To better understand the ins and outs of TLS certificates and the way they are stored in files, I decided to do a short series on the different PKCS (Public Key Cryptography Standards) that dissects each individual byte of the certificate or key file. This is part one which covers the public and private keys stored in the PKCS #1 format.</p>
   <p>The core and heart of a certificate are keys. Certificates utilize both public and private keys which are mathematically bound. The PKCS #1 standard includes both public and private key formats. The first step is to create the private key. Here is the way it's represented: on the top left - the binary file encoded in base64 (easiest for emailing or copy-pasting), below that - expanded into binary, and on the right - each byte expanded into what it means.</p>
@@ -108,7 +136,7 @@
 
     <item>
         <title>HTTP DANE Validation Assertion</title>
-        <link>https://www.cem.me/20141203-hdva.html</link>
+        <link>https://www.cem.me/20141203-hdva.html#cem</link>
         <description><![CDATA[
   <p>Certificates are typically authenticated via a chain of signatures that lead back to any one of a number of trusted roots. DNSSEC is validated much the same way, however, with DNSSEC there's only one root for delegating authority for the DNS while in certificates, any certificate authority can sign a certificate valid for any domain. There is a way to use this delegated system to verify connections made over TLS called DANE. In short, DANE is a way to use the DNSSEC to get signed records from an authoritative source to validate certificates used in TLS. You can see a great introduction to DANE by the working group co-chair here:<br /> <a target="_blank" href="https://www.youtube.com/watch?v=emDxUQl1NvA">https://www.youtube.com/watch?v=emDxUQl1NvA</a><br /> Also, some recent slides from a presentation by Dan York are here: <br /><a target="_blank" href="http://www.slideshare.net/Deploy360/3-dnssec-and-dane-ion-tokyo">http://www.slideshare.net/Deploy360/3-dnssec-and-dane-ion-tokyo</a>.</p>
 
@@ -131,7 +159,7 @@
 
     <item>
         <title>iOS 8.1 and CVE-2014-4449</title>
-        <link>https://www.cem.me/papers/cve-2014-4449.html</link>
+        <link>https://www.cem.me/papers/cve-2014-4449.html#cem</link>
         <description><![CDATA[
   <p>Today, Apple released security advisory <a href="http://support.apple.com/en-us/HT203119" target="_blank">APPLE-SA-2014-10-20-1</a> for iOS 8.1 that includes <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4449" target="_blank">CVE-2014-4449</a>.</p>
   <p>This relates to a TLS certificate validation vulnerability in the clients accessing iCloud affecting bookmarks, calendar, tasks, and possibly other data types allowing for modification and disclosure of data.</p>
