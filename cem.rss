@@ -17,7 +17,7 @@
 
 
    <item>
-        <title>Certificate Binary Posters (Part Six)</title>
+        <title>Certificate Binary Posters (Part Seven)</title>
 	<link>https://www.cem.me/20150402-cert-binaries-7.html?s=r</link>
 	<description><![CDATA[
 <p>Certificate revocation has been done in two primary ways Certificate Revocation Lists (CRLs) and the Online Certificate Status Protocol (OCSP) at least until some browsers <a href="https://www.imperialviolet.org/2014/04/19/revchecking.html" target="_blank">stopped</a> checking for revocation. However, extended validation (EV) certificates still elicit active revocation checking by most browsers.</p>
