@@ -17,6 +17,21 @@ text-decoration : none;
 nav img {
 vertical-align: middle;
 }
+
+#navLeft {
+position : fixed;
+float : left;
+top : 0px; /* .25em; */
+left: .25em;
+}
+
+#navRight {
+position : fixed;
+float : right;
+top : 0px; /* .25em; */
+right : .25em;
+}
+
 nav ul {
 margin : 0;
 padding : 0;
