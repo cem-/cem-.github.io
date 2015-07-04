@@ -135,3 +135,21 @@ img {
 	height: auto;
 	width: auto;
 }
+.pgp {
+line-height : 1em;
+color : black;
+font-family : monospace;
+overflow-x: scroll;
+overflow-y: hidden;
+overflow-wrap: initial;
+}
+.pgpArt {
+color : darkred
+}
+.pgpCEM {
+color : blue
+}
+.pgpCarl {
+color : darkolivegreen
+}
+
