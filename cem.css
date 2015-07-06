@@ -142,6 +142,7 @@ font-family : monospace;
 overflow-x: scroll;
 overflow-y: hidden;
 overflow-wrap: initial;
+font-size: xx-small;
 }
 .pgpArt {
 color : darkred

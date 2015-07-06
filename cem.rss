@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="/includes/css/rssfeed.css" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <atom:link href="https://www.cem.me/cem.rss" rel="self" type="application/rss+xml" />
@@ -14,6 +15,157 @@
       <generator>by hand in vim</generator>
       <managingEditor>c+blog@cem.me (Carl Mehner)</managingEditor>
       <webMaster>c+blog@cem.me (Carl Mehner)</webMaster>
+
+    <item>
+        <title>PGP ASCII Art</title>
+        <link>https://www.cem.me/20150706-pgp-art.html</link>
+	<description><![CDATA[
+<div class="pgp">
+<span class="pgp">
+-----BEGIN PGP PUBLIC KEY BLOCK-----<br />
+Version: GnuPG v1<br />
+<br />
+mQENBFWE8g8BCADWwAC1DXKsqGPZU0/OlzZvXr7waI1a15VdeocA5ILIU4IoSlne<br />
+9ZLhH/38qRWyk2sS8BtaD3DbA1Izz0STuiztyVOjbKk0yjKL3pWwpaWajD5AyhvV<br />
+Ln50e4s9RfyLw1OnOtCeN4G9OgR7Rrqr4JPdF09wUFgYVUWdeOmw9MGIdfTXadey<br />
+sU4vTt0maghZa0wDdcnfNFK/7VWJpbqttHncWWLAkLqhirSZA6wU4GRWlNQvsYbJ<br />
+BRVs+YrzewxpmBdiIjaTCeBSJPlEyLWlMw6ZPqzheSHjksuL6ElgDP5BZzYAPGCT<br />
+xrVHztT2u79M1I/wpPylGaaZgg+D2coTFIAvABEBAAG2AAACt0NhcmwgTSAoLi4u<br />
+</span><span class="pgpCarl">
+X</span><span class="pgpCEM">C4rI</span><span class="pgpCarl">XxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXX</span><span class="pgpCEM">C4rI</span><span class="pgpCarl">XxX</span><br />
+<span class="pgpArt">
+I11II11II11II11II11II11II11II11II11II11II11II11II11II11II11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000O000O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000O000O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I <br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I <br />
+I11II11II11II11II11II11II11II11II11II11II11II11II11II11II11II11I<br />
+<span class="pgpCarl">X</span><span class="pgpCEM">C4rI</span><span class="pgpCarl">XxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXX</span><span class="pgpCEM">C4rI</span><span class="pgpCarl">XxX</span><br />
+</span><span class="pgp">
+KSA8Y0BjZW0ubWU+iQE4BBMBAgAiBQJVhPIPAhsDBgsJCAcDAgYVCAIJCgsEFgID<br />
+AQIeAQIXgAAKCRBrDTHS1xnT+4mjB/0VXjlVNflzT3qaseILatLSSAt2t1nnBGxs<br />
+iJVdgIlQj2vYgb6IkmkeEsmu6avAgFktM0zM5uosx+VDxdI5v1CIUqxjWSDhOeMK<br />
+Q3E9BEK/yRrehPKe3Y/NAwaVI67C393jRSuVFPoNFViNfr1ZJU8TGUYOnO2ap+9Q<br />
+XlPdEXWXEyXg9luXOJl8H95XX+7b7DiStfAn3A4SXhtChDpMEkSdMD+brryB65Wh<br />
+epc7BIqkQyG0w70z22KUXDPeOEdmhEY03grMBpF4MguU7bmHQgI8wFY6rFde7RXz<br />
+4djsY/CILcITJcFVM0kThsMphsqLUVCvdFeK/vdZUazA3U/fnj7XuQENBFWE8g8B<br />
+CADYXMKMFTfq4BNF66KvI4uAlEg+zQyMRV49IAlxXA3oCKlkxzKvsvACOfjjvPcd<br />
+5DLkYA9PYZVaSWO4EU70F9chxxPA5Qkz7Y6/0wL5X3hD0fbmLtr6d0EzclhJPJ6a<br />
+XAcVBsY6QZRK4ulHp1xDbGnxVbL+Gi0w0gqKSa5vI94+aP+zFdBUFvZAa9hL7ez3<br />
+nm3V8H62X3Tj0Q8eCtCb3dgvDo4dRRJPOXAmydpCCZbH4EF8qI9d5Oup3FW6I8K+<br />
+5Zj5OfNAwSnsp3aTIBDq2BxxN6w0CwmnBxMDjho1KwBnxDF5DAX0kJGUjAQr7EGy<br />
+23SVqbXxVByWB2pGMIY1ZoozABEBAAGJAR8EGAECAAkFAlWE8g8CGwwACgkQaw0x<br />
+0tcZ0/s8ZwgAunktEwPOVDTqcDn39xigdslKikqWFZGZZlp2XwIUToc+wH6qAw8h<br />
+/Fc+gXT9YWc+866E3GNOuNAjY4mF/7mLorIhyVuL4lfdfxq33AKa55Bb2QpBc7iA<br />
+nVt1knLWBJ9sr2SaFsGDxEfRIJ3OxcXQOCfxtSzLnaH4TnVN45yflCkhcObYVg7X<br />
+1sReDDoRJmROOwi+riinSbohVRcNydx6RxaI3acH939IeGCCUUKvd87ShZjw/MxP<br />
+8Z6U0qgNnXrOWtTFjLkSt0e1p1JKklc0TYkIwCaSVYeTYH/ycgEg2m/HfKMQueBY<br />
+z8QGH8j84zQb4rjCI1gIwfQUbK/bmzcV7A==
+<br />
+=JyOF
+<br />
+-----END PGP PUBLIC KEY BLOCK-----
+</span>
+</div>
+
+<p>While I was making the <a href="https://www.cem.me/20150621-pgp-poster.html">PGP Poster</a> I noticed that the User ID Packet, while broken apart in the UI into: Name, Email, and Comment, was in actuality just a large UTF-8 string. My imagination was spurred on by thoughts of interesting things I could do in that field, I recalled the math done by <a href="https://rya.nc/cert-tricks.html" target="_blank">Ryan Castellucci</a> allowing him to embed messages in an SSL certificate's public key. However, that only allowed for around one line of text, and the message had to be short to not affect the resultant prime. I wanted to be able to create a multiline message that would allow the creation of ASCII-style art. Of course, the User ID packet in the PGP key is ideal since you can put a large amount of arbitrary UTF-8 text inside.</p>
+
+<p>The hardest part is translating UTF-8 into Base64 art. You cannot simply create a great piece of Base64 ASCII Art and throw it into the User ID packet because you first need valid UTF-8. </p>
+
+<p>The translation between UTF-8 and Base64 is tricky because they are 8 and 6 bits respectively. One way to consistently take care of this problem is to find the least common multiple of 6 and 8, which is 24. Dividing 24 by 6 shows that we will have 4 Base64-character blocks to use as our <q>building blocks</q> for the ASCII Art (which if you have not figured out by now is really UTF-8 Art… but that is not as fun to say and there is really not a big difference).</p>
+
+<p>The image below illustrates that showing UTF-8 characters translated into binary (split into 8-bits) and that binary, evenly divided into 6-bit chunks and translated into Base64.
+<img src="https://www.cem.me/art/utf2b64.svg" alt="utf8 to base64 translation"/></p>
+
+<p>Next, I wrote a script that printed out all of the valid UTF-8 characters in groups of 3 as translated to the 4 characters of Base64.</p>
+<pre>
+<code>
+#!/usr/bin/python
+import base64
+
+for x in range(33, 127) : # printable utf-8
+    for y in range(33, 127) :
+        for z in range(33, 127) :
+            s = chr(x) + chr(y) + chr(z)
+            print (base64.b64encode(s, None))
+</code>
+</pre>
+<p>This was a bit unwieldy; rather than search through nearly a half million patterns,  I wrote some regex to map out a few of the groups of characters that I thought would make good candidates.</p>
+
+<p>I came up with a few patterns to use; XC4r IXxX XXxX to put across the top and bottom (hint: it spells out ‘xCARLxxxxxxx’) then, to spell out CEM in the middle I used I11I and O000.</p>
+
+<p>The next thing is to pad out the beginning of the User ID packet up to the output newline boundary. This was done by calculating the amount of characters needed and adding that many spaces to the front part of the User ID packet using my poster from the previous post.</p>
+
+<p>Finally, start the key generation process and when it is time for the User ID input part, the default format from PGP keys is <q>&lt;Name&gt; (&lt;Comment&gt;) &lt;Email&gt;</q>. Make sure you factored the name and open parenthesis into the padding you needed, type the name and then, when asked, paste in the UTF-8 encoded Base64 ASCII art. The key generates encoding your glorious block of ASCII art. Print it out in the <a href="https://tools.ietf.org/html/rfc4880#section-6.2" target="_blank">ASCII Armor</a>'d <a href="https://tools.ietf.org/html/rfc4880#section-2.4" target="_blank">Radix-64</a> that we all know and love as a PGP Key and behold:</p>
+
+
+<div class="pgp">
+<span class="pgp">
+-----BEGIN PGP PUBLIC KEY BLOCK-----<br />
+Version: GnuPG v1<br />
+<br />
+mQENBFWE8g8BCADWwAC1DXKsqGPZU0/OlzZvXr7waI1a15VdeocA5ILIU4IoSlne<br />
+9ZLhH/38qRWyk2sS8BtaD3DbA1Izz0STuiztyVOjbKk0yjKL3pWwpaWajD5AyhvV<br />
+Ln50e4s9RfyLw1OnOtCeN4G9OgR7Rrqr4JPdF09wUFgYVUWdeOmw9MGIdfTXadey<br />
+sU4vTt0maghZa0wDdcnfNFK/7VWJpbqttHncWWLAkLqhirSZA6wU4GRWlNQvsYbJ<br />
+BRVs+YrzewxpmBdiIjaTCeBSJPlEyLWlMw6ZPqzheSHjksuL6ElgDP5BZzYAPGCT<br />
+xrVHztT2u79M1I/wpPylGaaZgg+D2coTFIAvABEBAAG2AAACt0NhcmwgTSAoLi4u<br />
+</span><span class="pgpCarl">
+X</span><span class="pgpCEM">C4rI</span><span class="pgpCarl">XxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXX</span><span class="pgpCEM">C4rI</span><span class="pgpCarl">XxX</span><br />
+<span class="pgpArt">
+I11II11II11II11II11II11II11II11II11II11II11II11II11II11II11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000O000O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000O000O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I<br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I <br />
+I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000O000O000</span><span class="pgpArt">I11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11II11I</span><span class="pgpCEM">O000</span><span class="pgpArt">I11II11I <br />
+I11II11II11II11II11II11II11II11II11II11II11II11II11II11II11II11I<br />
+<span class="pgpCarl">X</span><span class="pgpCEM">C4rI</span><span class="pgpCarl">XxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXXXxXX</span><span class="pgpCEM">C4rI</span><span class="pgpCarl">XxX</span><br />
+</span><span class="pgp">
+KSA8Y0BjZW0ubWU+iQE4BBMBAgAiBQJVhPIPAhsDBgsJCAcDAgYVCAIJCgsEFgID<br />
+AQIeAQIXgAAKCRBrDTHS1xnT+4mjB/0VXjlVNflzT3qaseILatLSSAt2t1nnBGxs<br />
+iJVdgIlQj2vYgb6IkmkeEsmu6avAgFktM0zM5uosx+VDxdI5v1CIUqxjWSDhOeMK<br />
+Q3E9BEK/yRrehPKe3Y/NAwaVI67C393jRSuVFPoNFViNfr1ZJU8TGUYOnO2ap+9Q<br />
+XlPdEXWXEyXg9luXOJl8H95XX+7b7DiStfAn3A4SXhtChDpMEkSdMD+brryB65Wh<br />
+epc7BIqkQyG0w70z22KUXDPeOEdmhEY03grMBpF4MguU7bmHQgI8wFY6rFde7RXz<br />
+4djsY/CILcITJcFVM0kThsMphsqLUVCvdFeK/vdZUazA3U/fnj7XuQENBFWE8g8B<br />
+CADYXMKMFTfq4BNF66KvI4uAlEg+zQyMRV49IAlxXA3oCKlkxzKvsvACOfjjvPcd<br />
+5DLkYA9PYZVaSWO4EU70F9chxxPA5Qkz7Y6/0wL5X3hD0fbmLtr6d0EzclhJPJ6a<br />
+XAcVBsY6QZRK4ulHp1xDbGnxVbL+Gi0w0gqKSa5vI94+aP+zFdBUFvZAa9hL7ez3<br />
+nm3V8H62X3Tj0Q8eCtCb3dgvDo4dRRJPOXAmydpCCZbH4EF8qI9d5Oup3FW6I8K+<br />
+5Zj5OfNAwSnsp3aTIBDq2BxxN6w0CwmnBxMDjho1KwBnxDF5DAX0kJGUjAQr7EGy<br />
+23SVqbXxVByWB2pGMIY1ZoozABEBAAGJAR8EGAECAAkFAlWE8g8CGwwACgkQaw0x<br />
+0tcZ0/s8ZwgAunktEwPOVDTqcDn39xigdslKikqWFZGZZlp2XwIUToc+wH6qAw8h<br />
+/Fc+gXT9YWc+866E3GNOuNAjY4mF/7mLorIhyVuL4lfdfxq33AKa55Bb2QpBc7iA<br />
+nVt1knLWBJ9sr2SaFsGDxEfRIJ3OxcXQOCfxtSzLnaH4TnVN45yflCkhcObYVg7X<br />
+1sReDDoRJmROOwi+riinSbohVRcNydx6RxaI3acH939IeGCCUUKvd87ShZjw/MxP<br />
+8Z6U0qgNnXrOWtTFjLkSt0e1p1JKklc0TYkIwCaSVYeTYH/ycgEg2m/HfKMQueBY<br />
+z8QGH8j84zQb4rjCI1gIwfQUbK/bmzcV7A==
+<br />
+=JyOF
+<br />
+-----END PGP PUBLIC KEY BLOCK-----
+</span>
+</div>
+
+
+
+		]]>
+        </description>
+        <pubDate>Mon, 06 Jul 2015 05:05:05 -0000</pubDate>
+        <guid>https://www.cem.me/20150706-pgp-art.html</guid>
+    </item>
 
 
    <item>

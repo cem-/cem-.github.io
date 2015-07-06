@@ -2,15 +2,15 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>c em|me</title>
+	<title>PGP ASCII Art - cem</title>
 	<meta name="author" content="Carl Mehner">
-    	<link rel="alternate" type="application/rss+xml" title="RSS"
+<link rel="alternate" type="application/rss+xml" title="RSS"
       href="https://www.cem.me/cem.rss">
+    
 	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="cem.css" />
     <script src="cem.js" ></script>	
-    <meta name="theme-color" content="darkolivegreen" />
 </head>
 
 <body>
@@ -30,13 +30,12 @@
 	</section>
 </header>
 
-
 <!-- -above is template for headers and style- -->
 
 
 <article>
   <header>
-	  <h1 class="title"><a href="20150706-pgp-art.html">PGP ASCII Art</a></h1>
+	  <h1 class="title"><a href="#">PGP ASCII Art</a></h1>
 	  <time class="pubdate" datetime="2015-07-06">2015-07-06</time>
   </header>
 
@@ -180,132 +179,6 @@ z8QGH8j84zQb4rjCI1gIwfQUbK/bmzcV7A==
 </div>
 
 </article>
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="20150621-pgp-poster.html">PGP Public Key</a></h1>
-	  <time class="pubdate" datetime="2015-06-21">2015-06-21</time>
-  </header>
-  <p>Pretty Good Privacy (PGP) has been around since 1991, it has since gained notoriety and ubiquity as one of the most popular<sup>[citation needed]</sup> person to person publication privacy programs. Now <a href="https://keybase.io/cem_">keybase.io</a> and even <a href="https://www.facebook.com/notes/protecting-the-graph/securing-email-communications-from-facebook/1611941762379302">Facebook</a> are allowing users to receive encrypted communications from their systems, whether or not that is a <a href="http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html">good idea</a>.</p> 
-
-<p>After learning about the ins and outs of <a href="https://www.cem.me/pki/index.html">certificate structures</a>, I tuned to PGP to learn how they are put together. Some of it is quite elegant, and allows the format to save space, especially in the packet headers where 2 bytes can convey essentially the same information that take 6 bytes in <a href="https://www.cem.me/20150209-cert-binaries-4.html">x.509</a>. PGP keys are made up of these packets, each packet is used to convey information about the key as a whole. By default, a key has 5 packets; Public Key (for signing), User ID (just text), Signature packet (times, algorithms, settings, and the Signature [over the Public Key, User ID, and most of the signature packet]), sub-key (for encrypting), and the sub-key signature.</p>
-
-<p>Each header starts with a 8-bit value. The first bit is always set, the second is a switch between old and new packet styles (the new style is used for tag types represented by values larger than 4 bits, by default, keys just have old style), for the old style bits 3 through 6 indicate the <a href="https://tools.ietf.org/html/rfc4880#section-4.3">packet type</a>, the last 2 bits tell the number of length bits that immediately follow the header packet.</p>
-
-<p>The public key packet contains the signing data and certifying other’s keys, the key for encrypting the data is the sub-key. The User ID packet is just UTF-8 data, this is normally a name, email address, and a comment from the owner (there is quite a bit of room here to store data... make sure you subscribe with <a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss'>feedly</a>, or with <a href="https://www.cem.me/cem.rss">rss here</a>). The two signature packets are used to show binding between a held private key by signing the hash of the public key in the particular packet (key or sub-key), and the information specified in the signature packet. Within the signature packet, there are several <a href="https://tools.ietf.org/html/rfc4880#section-5.2.3.1">sub-packets</a> that can contain a multitude of data from signature time policy data like what the key should be used for. This data is encoded in various ways from actual integer values, to hexadecimal values denoting particular values, and binary values where each bit adds a new flag value.</p>
-
-<p>Here is a posterized PGP key, it uses RSA keys (only 1024-bit for brevity) for both signing and encrypting and has an expiration date, the other values are just the OpenPGP defaults.</p>
-<p><a href="http://www.redbubble.com/people/cem-/works/15307088-pgp-public-key?c=377869-pki-posters" target="_blank">You can get a copy printed out here</a><p>
-<a href="https://dl.dropboxusercontent.com/u/25625347/PGP_Pub.png" target="_blank"><img src="https://lh3.googleusercontent.com/-JeDlyJY4fc8/VYpFna9YeMI/AAAAAAAAGwQ/_ySxho-jhwM/s800/PGP_Pub.png" alt="PGP Public Key" /></a>
-</article>
-
-
-
-<article>
-  <header>
-          <h1 class="title"><a href="pki/index.html">PKI Posters</a></h1>
-          <time class="pubdate" datetime="2015-04-18">2015-04-18</time>
-  </header>
-
-<p>This is a series of posters and along with explanations of what they mean. They go through the entire lifecycle of an SSL certificate; from the creation of the p and q for the private key, to the signing from the certificate authority, and finally to the inclusion of the serial number in revocation structures.</p>
-
-<p><small>
-This was originally released as a series of posts. They are still available here: (<a href="https://www.cem.me/20141221-cert-binaries.html">one</a>, <a href="https://www.cem.me/20150104-cert-binaries-2.html">two</a>, <a href="https://www.cem.me/20150121-cert-binaries-3.html">three</a>, <a href="https://www.cem.me/20150209-cert-binaries-4.html">four</a>, <a href="https://www.cem.me/20150301-cert-binaries-5.html">five</a>, <a href="https://www.cem.me/20150315-cert-binaries-6.html">six</a>, and <a href="https://www.cem.me/20150401-cert-binaries-7.html">seven</a>.)</small>
-</p>
-
-
-<a href="pki/index.html"><img src="art/posters.png" alt="posters" /></a>
-
-<p>If you want some high quality prints, or just want to support my work and get cool things to put on your wall you can do that <a href="https://www.redbubble.com/people/cem-/collections/377869-pki-posters">here</a> (you can get a <a href="https://www.redbubble.com/people/cem-/calendars/14447568-pki-poster-calendar">PKI Poster Calendar</a> and watch a cert throughout its lifecycle over a year).
-</p>
-
-
-</article>
-
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="20141203-hdva.html">HTTP DANE Validation Assertion</a></h1>
-	  <time class="pubdate" datetime="2014-12-03">2014-12-03</time>
-  </header>
-
-
-  <p>Certificates are typically authenticated via a chain of signatures that lead back to any one of a number of trusted roots. DNSSEC is validated much the same way, however, with DNSSEC there's only one root for delegating authority for the DNS while in certificates, any certificate authority can sign a certificate valid for any domain. There is a way to use this delegated system to verify connections made over TLS called DANE. In short, DANE is a way to use the DNSSEC to get signed records from an authoritative source to validate certificates used in TLS. You can see a great introduction to DANE by the working group co-chair here:<br /> <a target="_blank" href="https://www.youtube.com/watch?v=emDxUQl1NvA">https://www.youtube.com/watch?v=emDxUQl1NvA</a><br /> Also, some recent slides from a presentation by Dan York are here: <br /><a target="_blank" href="http://www.slideshare.net/Deploy360/3-dnssec-and-dane-ion-tokyo">http://www.slideshare.net/Deploy360/3-dnssec-and-dane-ion-tokyo</a>.</p>
-
-  <p>In all things there is risk, there are ways to mitigate risk using controls, some are detective controls (CT) some are preventative (DANE, Public Key Pinning). Other's have developed many different ideas in how to ensure that the certificate that makes it to the client's browser is the one which the site owner intended. Some have done analysis of the different methods [<a target="_blank" href="https://mediatum.ub.tum.de/node?id=1182735">Ralph Holz</a>][<a target="_blank" href="http://queue.acm.org/detail.cfm?id=2668154">Ben Laurie</a>][<a target="_blank" href="http://www.scriptjunkie.us/2013/12/a-comparison-of-https-reforms/">Matt Weeks</a>]. A <a target="_blank" href="http://www.securityweek.com/convergence-replacement-throwdown-dane-vs-tack-vs-ct">SecurityWeek</a> article today even positions CT as a replacement for the preventive controls of TACK and DANE. I like certificate transparency (CT) as a way to detect CA compromise, but that is only after the fact (somthing I think that is not quite pointed out in the comparison chart at <a target="_blank" href="http://www.certificate-transparency.org/comparison">certificate-transparency.org</a> or in Ben's ACM article from above). However, for a real-time preventitive control, I prefer DANE.</p>
-  <hr />
-<p>Recently, I uploaded a draft to the IETF with the goal of furthering the adoption of DANE.<br />
-<a target="_blank" href="https://datatracker.ietf.org/doc/draft-cem-dane-assertion/">https://datatracker.ietf.org/doc/draft-cem-dane-assertion/</a></p>
-<img src="art/hdva.svg" alt="hdva" />
-<p>Currently the adoption of DANE is lacking in browsers. The draft I wrote is to allow particular sites to declare themselves as ready to support DANE so that they can further lock down the security of their TLS connections. The method is to use an HTTP "Dane-Validation-Assertion" header or HDVA. I envision this as working as follows: A site sends the DVA header to a browser that tells the browser the browser will then do a lookup over DNSSEC for a TLSA (DANE) record to perform additional validations on the certificate.</p>
-
-<p>Options for this header include the max time to keep/remember the assertion, a way to include subdomains, and a way to require a valid DANE response before continuing. The max-age and include-subdomains are used in the same manner as HTTP Strict Transport Security (<a href="https://tools.ietf.org/html/rfc6797">HSTS</a>) and HTTP Public Key Pinning (<a href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning">HPKP</a>), the '<a href="http://tools.ietf.org/html/draft-cem-dane-assertion-00#section-2.1.3" target="_blank">require</a>' however, is a concept specific HDVA. The reason I included this directive was because the way DANE works; if you receive a certificate that is valid through the regular means of validating using certificate authorities (PKIX) and do not receive any DANE records, the connection will continue. By using the 'require' directive, the server operator forces the connection to be validated using the traditional method of CAs accompanied by DANE or solely by using DANE.</p>
-
-
-</article>
-
-<article>
-  <header>
-	  <h1 class="title"><a href="papers/cve-2014-4449.html">iOS 8.1 and CVE-2014-4449</a></h1>
-	  <time class="pubdate" datetime="2014-10-20">2014-10-20</time>
-
-  </header>
-  <p>Today, Apple released security advisory <a href="http://support.apple.com/en-us/HT203119" target="_blank">APPLE-SA-2014-10-20-1</a> for iOS 8.1 that includes <a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-4449" target="_blank">CVE-2014-4449</a>.</p>
-  <p>This relates to a TLS certificate validation vulnerability in the clients accessing iCloud affecting bookmarks, calendar, tasks, and possibly other data types allowing for modification and disclosure of data.</p>
-  <p>Exposure of sensitive reminders, meetings, bookmarks (including bookmarklets that could allow logins to other saved websites). Users may store sensitive data within these data objects that are synced to iCloud, these are at risk of exposure through this vulnerability.</p>
-  <p><a href="papers/cve-2014-4449.html">...MORE DETAILS...</a></p>
-</article>
-
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="20141019-tls-quotes.html">TLS Quotes</a></h1>
-	  <time class="pubdate" datetime="2014-10-19">2014-10-19</time>
-
-  </header>
-  <p>Just some completely random quotes about TLS following the POODLE vulnerability.</p>
-  <blockquote><p>"Remember, everything less than TLS 1.2 with an AEAD mode is cryptographically broken."<br />
-  -<a href="https://www.imperialviolet.org/2014/10/14/poodle.html" target="_blank">Adam Langley</a></p></blockquote>
-  <blockquote><p>"TLS_FALLBACK_SCSV is mainly about those vulnerabilities that we *can't* list <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-downgrade-scsv/" target="_blank">there</a> yet."<br />&mdash; <a href="http://www.ietf.org/mail-archive/web/tls/current/msg13926.html" target="_blank">Bodo Möller</a></p></blockquote>
-</article>
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="papers/emailcerts.html">[Not?] Misissued Certificates:</a></h1>
-	  <time class="pubdate" datetime="2014-04-03">2014-04-03</time>
-  <h4>or, how I was able to get over 2500 certificates for domains that I do not own</h4>
-
-  </header>
-  <p>Four years ago, in 2010, <a target="_blank" href="https://www.seifried.org/security/">Kurt Seifried</a> released <a target="_blank" href="http://www.linux-magazine.com/w3/issue/114/054-055_kurt.pdf">research</a> on how certificate authorities (CAs) validated hostnames in SSL certificate requests. <a href="https://afreak.ca/blog/author/ckeigher/" target="_blank">Colin Keigher</a> followed on by with an <a href="https://afreak.ca/blog/whos-letting-me-become-ssladmin/" target="_blank">actual implementation</a> of that research resulting in his finding of five email providers that allowed the registering of addresses, which effectively allowed him to garner certificates for those domains.</p>
-  <p>I found that this avenue for procuring certificates still exists in at least two mail providers, which means that I was able to get upwards of 2,500 certificates for various domains that I do not own.</p>
-  <p><a href="papers/emailcerts.html">[...READ MORE...]</a></p>
-</article>
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="papers/hpkpwn.html">Bug in Chrome security feature can fill up your hard drive &amp; crash the browser</a></h1>
-	  <time class="pubdate" datetime="2014-02-20">2014-02-20</time>
-
-  </header>
-  <p>The security feature in question is one that I have <a target="_blank" href="20121201-cert-pinning.html">talked about before</a>: HTTP Public Key Pinning (<a target="_blank" href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning">HPKP</a>). This feature allows a website to tell the browser only to connect to the site if it is using a particular set of SSL certificates. For example, a site can specify that the browser only use a particular CA (certificate authority) or set of CAs when communicating with its servers.</p>
-  <p>On to <a target="_blank" href="https://code.google.com/p/chromium/issues/detail?id=316032">the bug</a>...</p>
-  <p>Without <a target="_blank" href="https://codereview.chromium.org/86043003/">this patch</a> an evil website has the ability to fill up your hard drive, or at least up to about 16 <a target="_blank" href="http://en.wikipedia.org/wiki/Exabyte">exabytes</a>.</p>
-  <p><a href="papers/hpkpwn.html">[...READ MORE...]</a></p>
-
-</article>
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="all.html">[...more...]</a></h1>
-  </header>
-</article>
-
 
 <footer>
 	<cite>
