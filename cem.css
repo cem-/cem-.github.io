@@ -153,4 +153,12 @@ color : blue
 .pgpCarl {
 color : darkolivegreen
 }
+.snippet {
+line-height : 1em;
+color : black;
+font-family : monospace;
+overflow-x: scroll;
+overflow-y: hidden;
+overflow-wrap: initial;
+}
 

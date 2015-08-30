@@ -5,7 +5,8 @@
 	<title>Revocation Posters - cem</title>
 	<meta name="author" content="Carl Mehner">
 <link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://www.cem.me/cem.rss">
+      href="https://www.cem.me/cem.rss">
+
     
 	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,16 +43,16 @@
 
 <p>CRLs are a list of revoked certificate serial numbers from a given certificate authority. Besides the serial number, the revoked certificate list includes the timestamp of the revocation occurrence and the reason the certificate was revoked (though the reason is <a href="http://www.ccs.neu.edu/home/cbw/pdf/imc254-zhang.pdf" target="_blank">not always useful</a> in the real world). This poster has only one revoked certificate for brevity, however, if there were others they would be listed serially within the revokedCertificatesList section.</p>
 
-<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6132991331017780034"><img src="https://lh5.googleusercontent.com/-jCPScC-bw6I/VRzDHx_da0I/AAAAAAAAGK4/HyTzHOXaPhU/s800/crl.png" alt="CRL" /></a>
+<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6132991331017780034"><img src="art/cryptoposters/crl.png" alt="CRL" /></a>
 
 <p>When in normal operation certificate authorities have CRL sizes that can get quite large. After <a href="http://en.wikipedia.org/wiki/Heartbleed" target="_blank">heartbleed</a> the CRL for the main CA used by CloudFlare was nearly five megabytes and used up nearly $400K worth of bandwidth. On the other hand, OCSP is much less weighty when compared to CRLs. Also, OCSP has the ability of being able to be used as a type of whitelist rather than a blacklist like CRL. An OCSP server is able to affirmatively acknowledge that a certificate is valid. With OCSP, you get a simple request and response for only the certificate you are checking rather than a large file which the validator must search through checking every serial revoked by the CA. The OCSP request is built first from the validating side by issuing a request of the OCSP server (specifying that by hashes of the CA name and key) for a particular serial.
 </p>
 
-<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6132991323211648386"><img src="https://lh3.googleusercontent.com/-VD5-GMWzM-s/VRzDHU6VTYI/AAAAAAAAGKw/lmrvs71UrRY/s800/ocspReq.png" alt="OCSP Req" /></a>
+<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6132991323211648386"><img src="art/cryptoposters/ocspReq.png" alt="OCSP Req" /></a>
 
 <p>The OCSP server will reply back with a response: good, revoked, or unknown. Alternatively, the server can return unauthenticated error codes: malformed request, internal server error, try again later, client signature required, or unauthorized. This response is split into 3 main sections, the wrapper information, the response from the server, the signature, and the chain of the OCSP responder. The server response first contains the responder subject name information, the time the response was signed, and the response. The response is made up of the information from the request, the response (good, revoked [with the time and reason code], or unknown), and the time the response is good from followed by an optional end time for the response.</p>
 
-<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6132991338864835394"><img src="https://lh6.googleusercontent.com/-9hNJ1Tkc7uM/VRzDIPOV-0I/AAAAAAAAGK8/HQiQb5nzKHs/s800/ocspResp.png" alt="OCSP Resp" /></a>
+<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6132991338864835394"><img src="art/cryptoposters/ocspResp.png" alt="OCSP Resp" /></a>
 
 <p>These methods have largely been replaced by Certificate Trust Lists (CTLs) in Microsoft and CRLSets in Chrome (and soon <a href="https://blog.mozilla.org/security/2015/03/03/revoking-intermediate-certificates-introducing-onecrl/" target="_blank">OneCRL</a> in Firefox &gt;v37. However, these only typically cover emergencies or Issuer/CA certificates. The real solution is short term certificates (certificates only good for a day or two). If that is not feasible, then the solution is requiring servers to <a href="https://tools.ietf.org/html/draft-hallambaker-muststaple-00" target="_blank">staple OCSP responses</a> within the TLS handshake, forcing valid up-to-date revocation information in every connection.</p>
 

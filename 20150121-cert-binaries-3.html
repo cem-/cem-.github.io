@@ -5,7 +5,8 @@
 	<title>Crypto Posters 3 - cem</title>
 	<meta name="author" content="Carl Mehner">
 <link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://www.cem.me/cem.rss">
+      href="https://www.cem.me/cem.rss">
+
     
 	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,12 +41,12 @@
   </header>
   <p><small>If you missed the previous posts, you may want to read them first (<a href="20141221-cert-binaries.html">Part One</a>, <a href="20150104-cert-binaries-2.html">Part Two</a>)</small></p>  
   <p>This first part is a building block for more wonderful things to come. The Distinguished Name for x.500 are the basis for identity and trust on the Internet. You may notice that the base64 in the upper left is a certificate request, I highlighted the bytes to pull out of that to show this detailed view in order to clarify this more complex block. Each of the names in the that make up the distinguished name are an ASN.1 'set' containing a 'sequence' of the attribute type and the value of the attribute. The attribute type is an OID (Object IDentifier), a hierarchical structure used to describe namespaces. All of the OIDs here are under the x.500 attribute types namespace. Second within the set, after the OID, is the value associated to it: country, state, local, et seq. This is encoded in the UTF-8 (<b>U</b>niversal Character Set + <b>T</b>ransformation <b>F</b>ormat).</p>
-  <a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6108892206094196610"><img src="https://lh5.googleusercontent.com/-bOZoHpYv6CY/VMclGFtln4I/AAAAAAAAF90/wFpokNapgvE/s800/DNx500.png" alt="x.500 - DN" /></a>
+  <a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6108892206094196610"><img src="art/cryptoposters/DNx500.png" alt="x.500 - DN" /></a>
   <p>The base64 in the top left of this next poster is the same as the last, however, as the last focused on the DN, this focuses on most of the rest. I say most because the sequence immediately following the DN is a PKCS#1 object. This is the same thing I went over at the end of <a href="20141221-cert-binaries.html">part one</a>.</p>
   <p>CSRs are sent to a certificate authority which they then use to produce a signed certificate for use in TLS to secure websites, or any number of other x.509/PKI applications.</p>
   <p>The entire CSR is contained in one large sequence. Within that is a sequence of request data followed by the CSR signature algorithm and lastly the signature value.</p>
   <p>The request data is made up of a version (value of 0, meaning of 1; <small>remember computer scientists count from 0...</small>), the DN above (which specifies the request identification information), after that is the PKCS#1 object (identical to the PKCS#1 public key poster). Lastly is the attributes section, here it is empty. The attributes are defined in a PKCS#9 objects. This field is little used now, but at one point it was used to add passwords that the requestor would have to provide at the time of revocation to authenticate to the revocation system.</p>
-  <a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6108892210822379682"><img src="https://lh4.googleusercontent.com/-LDapn68tJWo/VMclGXU3-KI/AAAAAAAAF94/vVhrPyHbXsM/s800/p10.png" alt="pkcs10" /></a>
+  <a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6108892210822379682"><img src="art/cryptoposters/p10.png" alt="pkcs10" /></a>
   <p>Next, what the certificate authority sends back.</p>
 
 
