@@ -33,6 +33,126 @@
 
 <!-- -above is template for headers and style- -->
 
+<article>
+  <header>
+	  <h1 class="title"><a href="20160108-keychain.html">OS X Keychain Key Export Authentication Bypass</a></h1>
+	  <time class="pubdate" datetime="2016-01-08">2016-01-08</time>
+  </header>
+
+<p>
+This vulnerability allows anyone, with log-on access to an OS X machine, the ability to export private keys from the system keystore of OS X. Normally, there are two ways to stop this, only system administrators would have access to use or export system keys and they can be made non-exportable for any user. However, for this vulnerability, those two mitigations matter not. Normally, one would need to authenticate as an administrator, but as you can see below, Apple’s authentication procedure does not error out properly. This means that if an administrator has deployed a certificate solely, meant for system use, anyone else now can use it for their own purposes. </p>
+<p><b>Note:</b>I believe this is the same as CVE-2015-7058, however, I never recived official confirmation of that from Apple. It does seem the same, and appears to be fixed at this time.
+</p>
+<br />
+<h3>Disclosure Timeline:</h3>
+<ul>
+<li>2015-03-12: Initial discovery</li>
+<li>2015-03-13: Reported to Apple</li>
+<li>2015-03-17: Apple responded they are investigating</li>
+<li>2015-12-08: Update released</li>
+<li>2015-12-10: Asked for confirmation that <a href="http://lists.apple.com/archives/security-announce/2015/Dec/msg00005.html">CVE-2015-7058</a> was the same vuln I reported - crickets.</li>
+<li>2016-01-06: Public Disclosure</li>
+</ul>
+
+<h3>Technical Details &amp; Description</h3>
+
+<h5>Affected Product Details:</h5>
+<p>
+OS X before 10.11.2<br />
+Apple iOS before 9.2<br />
+Apple tvOS before 9.1</p>
+
+<h5>Security Risk:</h5>
+<p>
+A non-privileged user is able to export keys and certificate
+ they should not have access to export. Additionally, they
+ are able to deactivate the non-exportable flag on the key
+ if it was originally imported with '-x'.</p>
+
+<h5>How to recreate results / PoC:</h5>
+<p><i>Prerequisites</i></p>
+<p>
+Either:<br />
+ An asymmetric key exists in the system keystore and is
+ marked as non-exportable. A user (with administrator or
+ non-administrator system access) exists such that said 
+ user desires the p and q (aka.
+<a href="http://www.cem.me/20141221-cert-binaries.html">private key</a>).</p>
+<p>
+Or, an asymmetric key exists in the system keystore that
+ is exportable by administrators only. A non-administrator
+ exists that wants the key.</p>
+
+<h5>The "Attack"</h5>
+<p>
+A user logs into the machine.
+Open Keychain Access, select the system keystore
+Select the key to export, perform a 'secondary click' (aka 'right-click') on
+the key, select the export menu item.</p>
+<dl>
+<dt>
+A prompt appears asking for a location to save the key:
+<dd> Choose a place to save the key
+<dt>A prompt appears to request administrator level credentials:
+<dd> <i>Gently press the escape key once.</i>
+<dd> The key is now exportable (if it wasn't before).
+<dt>A prompt appears to set the exported key’s passphrase.
+<dd> Choose to enter a password, or leave it blank. Click OK.
+<dd> The user now has a pkcs#12 file complete with the private key.
+</dl>
+
+<h5>Speculation below!</h5>
+
+<p>From what I can tell, the code would be something similar to this:</p>
+
+<div class="snippet">
+<pre>
+<code>
+
+public void exportCertFromKeychain(certID cert) {
+bool exportable = true;
+	// get place to store exported cert 
+	// this should only happen after authorization!
+	filename f = getExportLocation();
+	// check if access is locked down to only allow
+	//   administrators, or if it is non-exportable
+	if(isProtected(cert)) {
+		// get Authorization 
+		int authResult = authenticateAdmin();
+/* Authentication returns several different codes
+0 is errAuthorizationSuccess
+-60005 is errAuthorizationDenied
+-60006 is errAuthorizationCanceled */
+		if(authResult == 0)
+			// here is the non-exportable bug
+			// this should be the first thing checked..
+			if(markedNonExportable(certID))
+				exportable = false;
+else if(authResult == -60005) // here is the admin bug
+			exportable = false;
+		// they should check if 'authResult' was 0,
+		// and if not, set the value to false
+		// when you cancel, the result is -60006
+		// and 'exportable' remains true.
+		
+	}
+// get export password
+	string pass = getPassword();
+	if(exportable) {
+		exportCert(f, cert);
+	} else {
+		showError();
+	}
+}
+
+</code>
+</pre>
+</div>
+
+
+</article>
+
+
 
 <article>
   <header>

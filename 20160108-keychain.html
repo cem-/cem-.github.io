@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Keychain Auth Bypass</title>
+<meta name="author" content="Carl Mehner">
+<link rel="alternate" type="application/ +xml" title="RSS"
+      href="https://www.cem.me/cem.rss">
+    
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="cem.css" />
+    <script src="cem.js" ></script> 
+</head>
+
+<body>
+
+<header>
+<nav>
+<object type="image/svg+xml" data="art/navL.svg" id="navLeft"></object>
+    <object type="image/svg+xml" data="art/navR.svg" id="navRight"></object>
+</nav>
+    
+<section id="topTitle">
+<p>&nbsp;</p>
+  <a href="https://www.cem.me/index.html">
+   <img class=mainLogo src="art/cem.svg" alt="cem.me"/>
+  </a><br />
+  <h2>carl mehner's blog</h2>
+ </section>
+</header>
+
+<!-- -above is template for headers and style- -->
+
+
+<article>
+  <header>
+   <h1 class="title"><a href="#">OS X Keychain Key Export Authentication Bypass</a></h1>
+   <time class="pubdate" datetime="2016-01-08">2016-01-08</time>
+
+  </header>
+ 
+<p>
+This vulnerability allows anyone, with log-on access to an OS X machine, the ability to export private keys from the system keystore of OS X. Normally, there are two ways to stop this, only system administrators would have access to use or export system keys and they can be made non-exportable for any user. However, for this vulnerability, those two mitigations matter not. Normally, one would need to authenticate as an administrator, but as you can see below, Apple’s authentication procedure does not error out properly. This means that if an administrator has deployed a certificate solely, meant for system use, anyone else now can use it for their own purposes. </p>
+<p><b>Note:</b>I believe this is the same as CVE-2015-7058, however, I never recived official confirmation of that from Apple. It does seem the same, and appears to be fixed at this time.
+</p>
+<br />
+<h3>Disclosure Timeline:</h3>
+<ul>
+<li>2015-03-12: Initial discovery</li>
+<li>2015-03-13: Reported to Apple</li>
+<li>2015-03-17: Apple responded they are investigating</li>
+<li>2015-12-08: Update released</li>
+<li>2015-12-10: Asked for confirmation that <a href="http://lists.apple.com/archives/security-announce/2015/Dec/msg00005.html">CVE-2015-7058</a> was the same vuln I reported - crickets.</li>
+<li>2016-01-06: Public Disclosure</li>
+</ul>
+
+<h3>Technical Details &amp; Description</h3>
+
+<h5>Affected Product Details:</h5>
+<p>
+OS X before 10.11.2<br />
+Apple iOS before 9.2<br />
+Apple tvOS before 9.1</p>
+
+<h5>Security Risk:</h5>
+<p>
+A non-privileged user is able to export keys and certificate
+ they should not have access to export. Additionally, they
+ are able to deactivate the non-exportable flag on the key
+ if it was originally imported with '-x'.</p>
+
+<h5>How to recreate results / PoC:</h5>
+<p><i>Prerequisites</i></p>
+<p>
+Either:<br />
+ An asymmetric key exists in the system keystore and is
+ marked as non-exportable. A user (with administrator or
+ non-administrator system access) exists such that said 
+ user desires the p and q (aka.
+<a href="http://www.cem.me/20141221-cert-binaries.html">private key</a>).</p>
+<p>
+Or, an asymmetric key exists in the system keystore that
+ is exportable by administrators only. A non-administrator
+ exists that wants the key.</p>
+
+<h5>The "Attack"</h5>
+<p>
+A user logs into the machine.
+Open Keychain Access, select the system keystore
+Select the key to export, perform a 'secondary click' (aka 'right-click') on
+the key, select the export menu item.</p>
+<dl>
+<dt>
+A prompt appears asking for a location to save the key:
+<dd> Choose a place to save the key
+<dt>A prompt appears to request administrator level credentials:
+<dd> <i>Gently press the escape key once.</i>
+<dd> The key is now exportable (if it wasn't before).
+<dt>A prompt appears to set the exported key’s passphrase.
+<dd> Choose to enter a password, or leave it blank. Click OK.
+<dd> The user now has a pkcs#12 file complete with the private key.
+</dl>
+
+<h5>Speculation below!</h5>
+
+<p>From what I can tell, the code would be something similar to this:</p>
+
+<div class="snippet">
+<pre>
+<code>
+
+public void exportCertFromKeychain(certID cert) {
+bool exportable = true;
+	// get place to store exported cert 
+	// this should only happen after authorization!
+	filename f = getExportLocation();
+	// check if access is locked down to only allow
+	//   administrators, or if it is non-exportable
+	if(isProtected(cert)) {
+		// get Authorization 
+		int authResult = authenticateAdmin();
+/* Authentication returns several different codes
+0 is errAuthorizationSuccess
+-60005 is errAuthorizationDenied
+-60006 is errAuthorizationCanceled */
+		if(authResult == 0)
+			// here is the non-exportable bug
+			// this should be the first thing checked..
+			if(markedNonExportable(certID))
+				exportable = false;
+else if(authResult == -60005) // here is the admin bug
+			exportable = false;
+		// they should check if 'authResult' was 0,
+		// and if not, set the value to false
+		// when you cancel, the result is -60006
+		// and 'exportable' remains true.
+		
+	}
+// get export password
+	string pass = getPassword();
+	if(exportable) {
+		exportCert(f, cert);
+	} else {
+		showError();
+	}
+}
+
+</code>
+</pre>
+</div>
+
+
+</article>
+
+
+
+
+</article>
+
+<footer>
+ <cite>
+  <a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem. ' class="feedly"  target='blank'><img id='feedlyFollow' src='art/fd.png' alt='follow me in feedly'></a>
+  Copyright &copy; Carl Mehner</cite>
+</footer>
+
+</body>
+</html>
+
