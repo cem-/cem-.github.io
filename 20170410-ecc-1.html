@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <title>ECC Poster - c em|me</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Carl Mehner">
+    <meta name="theme-color" content="darkolivegreen" >
+    <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="https://www.cem.me/cem.rss">
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
+    <link type="text/css" rel="stylesheet" href="https://www.cem.me/cem.css" >
+    <script src="https://www.cem.me/cem.js" ></script>  
+
+<header>
+    <nav>
+        <object type="image/svg+xml" data="https://www.cem.me/art/navL.svg" id="navLeft"></object>
+            <object type="image/svg+xml" data="https://www.cem.me/art/navR.svg" id="navRight"></object>
+    </nav>
+    
+    <section id="topTitle">
+        <p>&nbsp;</p>
+        <a href="https://www.cem.me/index.html">
+            <img class=mainLogo src="https://www.cem.me/art/cem.svg" alt="cem.me">
+        </a><br>
+        <h2>carl mehner's blog</h2>
+    </section>
+</header>
+
+
+<article>
+  <header>
+      <h1 class="title"><a href="#">ECC keys (Part 1)</a></h1>
+      <time class="pubdate" datetime="2017-04-10">2017-04-10</time>
+  </header>
+
+
+<p>Elliptic curve cryptography (ECC) began steadily increasing in normal use across the Internet over the past few years The number of TLS sessions tracked by WikiMedia hovered around 96 percent on average over the course of <a href="https://grafana.wikimedia.org/dashboard/db/tls-ciphers">2016</a>. Nearly everyone uses ECC every day on the Internet. In keeping with this trend, several people have put up some very good tutorials and talks about ECC.
+Nick Sullivan wrote an ECC primer when Cloudflare started using certificates that make use of ECC that you can read <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">here</a>.
+<p>Andrea Corbellini wrote a set of blog posts explaining deeper the way that the ECC maths (addition, multiplication, etc) work on curves with gif visualizations in <a href="http://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/">part 1</a> and how that works on finite fields in <a href="http://andrea.corbellini.name/2015/05/23/elliptic-curve-cryptography-finite-fields-and-discrete-logarithms/">part 2</a>.
+Martijn Grooten gave a great intro to ECC <a href="https://www.youtube.com/watch?v=yBr3Q6xiTw4">here</a> including a good explaination on the way private keys work and why ECC is faster for point multiplication than for "division", which is essencially the crux of why ECC is considered secure.
+<p>Those resources all tend to deal with the math and theory behind ECC, this post is more about how keys are encoded for use in day-to-day use across the Internet and how the different parts of the keys fit into the math behind ECC.
+<p>Similar to <a href="https://www.cem.me/20141221-cert-binaries.html">RSA keys</a>, ECC keys are encoded for storage and transmission using ASN.1 and the binary ASN.1 values are sometimes then encoded further as base64. There are a few different ways to encode EC keys, but one of the most common (currently) is SEC1 (Standards for Efficient Cryptography, specification 1).
+This first example is the Curve P-256 encoded to explicitly include all the P-256 parameters from the SEC1.
+<br>
+<img src="art/cryptoposters/p256_exp.png" alt="p-256 with explicit parameters" >
+<p>The entire encoded key is wrapped in an ASN.1 sequence the same as <a href="https://www.cem.me/20141221-cert-binaries.html">RSA keys</a>. Next, a version number to allow for future changes in the way keys are stored. (So far, it doesn’t look like this will be used any time soon. Incrementing the version number was planned for RFC 5480, but did not make it past the draft process.)
+After the the version field, is the private key. For elliptic curves, the private key is simply a random number, in this case, 256 random bits.
+The next section is the elliptic curve domain parameters, which contains the public, agreed upon, parameters for the particular curve. In this section, we have the typical version number at the start, followed by the OID (Object IDentifier) stating that this information is for an ANSI X9.62 type curve and the field size of that curve. The field size is the length, in bits, of the finite field that makes up the plane in which the elliptic curve operates.
+The next part of the explicit parameters is the Curve Info, this section tells the way to initialize the curve equation before beginning the cryptographic calculations. The first two elements of this section are 'a' and 'b', the multiplicand and addend, respectively, of the curve equation, y^2 = x^3 + ax + b. The final piece is the seed value; this is the controversial part of P-256, any discussion around backdoors or weakness tend to center around this discrete value. The seed value is "random", then is hashed and run through an algorithm to get the addend "b" encoded previously. It is included in the curve parameters for verification purposes. The algorithm for verification and generation are found in the <a href="http://csrc.nist.gov/groups/ST/toolkit/documents/dss/NISTReCur.pdf">NIST Digital Signature Standard</a>.
+Following the curve parameters is the base point, the starting point for the math involved with the curve. Harkening back to Martijn's talk on ECC, at about the 10 minute mark, you can see where this base point come into play (or you could wait a few more paragraphs). The base point is encoded in a different way than most of the other cryptographic values we use in certificates. First, all the information is retrieved from an octet string.
+The first byte of this octet string is a flag to notate whether or not the base point is encoded in the (not often used) compressed form (<code>0x02</code> or <code>0x03</code>) or the uncompressed form (<code>0x04</code>). If the flag is for the uncompressed form, as it is in this example, the remainder of the octet string is evenly divided into two parts, the x-coordinate and the y-coordinate. If the flag is set to use a compressed form, the value depends on the value of the y-coordinate (<code>0x02</code>, if even and <code>0x03</code> if odd), the remainer of the octet string is the x-coordinate.
+The x-coordinate in the compressed form the y-coordinate simply calculated based off of the curve parameters. The order, a prime value, and the cofactor follow as the last of the domain parameters for the curve. Multiplying the order and cofactor give the total number of available points that are on this curve.
+The final part of the ECC key is the data describing the public key. It is encoded in the same manner as the basepoint from before; compression flag, x-coordinate, then (if needed) the y-coordinate. The public key here is used in a similar fashion to the public key in RSA cryptography, however, instead of being generated by multiplying two primes, it is created by adding the basepoint to itself the number of times, as specified in the private key.
+<p>When using a curve encoded without the explicit parameters included, the result is much shorter. Also, since curves, like P-256 and other "NIST Curves", are widely supported in crypto libraries and software packages, the explicit parameters are typically left out and instead replaced with the named curve's identifier. For P-256, the OID is 1.2.840.100.45.3.1.7; this simple set of numbers replaces all of the domain parameters previously described.
+<br><img src="art/cryptoposters/p256.png" alt="p-256 with implicit parameters" >
+<p>Other curves standardized prior to around 2010, such as the ones used in OpenSSL 1.0.1 and earlier, follow these forms of either the, little used, explicit curve or the curve forms with implicit parameters. Examples include other NIST curves or the Brainpool curves.
+<p>One example of an alternate curve using a very similar form is the secp256k1. This is the elliptic curve used in Bitcoin. The only difference between the non-explicit parameter p-256 and secp256k1 is the OID used to identify the curves (and the public / private key pair).
+<br><img src="art/cryptoposters/secp256k1.png" alt="secp256 with implicit parameters" >
+<p>When the explicit parameters are added to the secp256k1, it is easier to see the differences between it and P-256. The first difference is the field size: in 256k1, the field size is slightly larger than the P-256 field. Next, the main difference; constants a and b in this curve are 0 and 7, respectively rather than the much larger a and b from P-256. The k in secp256k1 stands for Koblitz, named after Neal Koblitz, a University of Washington professor. Koblitz curves are known for their speed as well as the lack of a seed of random/unexplained origin. The remaining elements very similar to the p-256 curve.
+<br><img src="art/cryptoposters/secp256k1_exp.png" alt="secp256 with explicit parameters" >
+<p>The next post, ECC (Part 2), will have some newer curves that have been recently gaining popularity and standardization. To make sure you see that when it is published, subscribe on <a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss">Feedly</a>, or anywhere else using <a href="https://www.cem.me/cem.rssf">RSS</a>
+</article>
+
+
+<footer>
+	<cite>
+		<a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss' class="feedly"  target='blank'><img id='feedlyFollow' src='art/fd.png' alt='follow me in feedly'></a>
+		Copyright &copy; Carl Mehner</cite>
+</footer>
+

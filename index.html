@@ -33,6 +33,45 @@
 
 <!-- -above is template for headers and style- -->
 
+
+<article>
+  <header>
+      <h1 class="title"><a href="20170410-ecc-1.html">ECC keys (Part 1)</a></h1>
+      <time class="pubdate" datetime="2017-04-10">2017-04-10</time>
+  </header>
+
+
+<p>Elliptic curve cryptography (ECC) began steadily increasing in normal use across the Internet over the past few years The number of TLS sessions tracked by WikiMedia hovered around 96 percent on average over the course of <a href="https://grafana.wikimedia.org/dashboard/db/tls-ciphers">2016</a>. Nearly everyone uses ECC every day on the Internet. In keeping with this trend, several people have put up some very good tutorials and talks about ECC.
+Nick Sullivan wrote an ECC primer when Cloudflare started using certificates that make use of ECC that you can read <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">here</a>.
+<p>Andrea Corbellini wrote a set of blog posts explaining deeper the way that the ECC maths (addition, multiplication, etc) work on curves with gif visualizations in <a href="http://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/">part 1</a> and how that works on finite fields in <a href="http://andrea.corbellini.name/2015/05/23/elliptic-curve-cryptography-finite-fields-and-discrete-logarithms/">part 2</a>.
+Martijn Grooten gave a great intro to ECC <a href="https://www.youtube.com/watch?v=yBr3Q6xiTw4">here</a> including a good explaination on the way private keys work and why ECC is faster for point multiplication than for "division", which is essencially the crux of why ECC is considered secure.
+<p>Those resources all tend to deal with the math and theory behind ECC, this post is more about how keys are encoded for use in day-to-day use across the Internet and how the different parts of the keys fit into the math behind ECC.
+<p>Similar to <a href="https://www.cem.me/20141221-cert-binaries.html">RSA keys</a>, ECC keys are encoded for storage and transmission using ASN.1 and the binary ASN.1 values are sometimes then encoded further as base64. There are a few different ways to encode EC keys, but one of the most common (currently) is SEC1 (Standards for Efficient Cryptography, specification 1).
+This first example is the Curve P-256 encoded to explicitly include all the P-256 parameters from the SEC1.
+<br>
+<img src="art/cryptoposters/p256_exp.png" alt="p-256 with explicit parameters" >
+<p>The entire encoded key is wrapped in an ASN.1 sequence the same as <a href="https://www.cem.me/20141221-cert-binaries.html">RSA keys</a>. Next, a version number to allow for future changes in the way keys are stored. (So far, it doesn’t look like this will be used any time soon. Incrementing the version number was planned for RFC 5480, but did not make it past the draft process.)
+After the the version field, is the private key. For elliptic curves, the private key is simply a random number, in this case, 256 random bits.
+The next section is the elliptic curve domain parameters, which contains the public, agreed upon, parameters for the particular curve. In this section, we have the typical version number at the start, followed by the OID (Object IDentifier) stating that this information is for an ANSI X9.62 type curve and the field size of that curve. The field size is the length, in bits, of the finite field that makes up the plane in which the elliptic curve operates.
+The next part of the explicit parameters is the Curve Info, this section tells the way to initialize the curve equation before beginning the cryptographic calculations. The first two elements of this section are 'a' and 'b', the multiplicand and addend, respectively, of the curve equation, y^2 = x^3 + ax + b. The final piece is the seed value; this is the controversial part of P-256, any discussion around backdoors or weakness tend to center around this discrete value. The seed value is "random", then is hashed and run through an algorithm to get the addend "b" encoded previously. It is included in the curve parameters for verification purposes. The algorithm for verification and generation are found in the <a href="http://csrc.nist.gov/groups/ST/toolkit/documents/dss/NISTReCur.pdf">NIST Digital Signature Standard</a>.
+Following the curve parameters is the base point, the starting point for the math involved with the curve. Harkening back to Martijn's talk on ECC, at about the 10 minute mark, you can see where this base point come into play (or you could wait a few more paragraphs). The base point is encoded in a different way than most of the other cryptographic values we use in certificates. First, all the information is retrieved from an octet string.
+The first byte of this octet string is a flag to notate whether or not the base point is encoded in the (not often used) compressed form (<code>0x02</code> or <code>0x03</code>) or the uncompressed form (<code>0x04</code>). If the flag is for the uncompressed form, as it is in this example, the remainder of the octet string is evenly divided into two parts, the x-coordinate and the y-coordinate. If the flag is set to use a compressed form, the value depends on the value of the y-coordinate (<code>0x02</code>, if even and <code>0x03</code> if odd), the remainer of the octet string is the x-coordinate.
+The x-coordinate in the compressed form the y-coordinate simply calculated based off of the curve parameters. The order, a prime value, and the cofactor follow as the last of the domain parameters for the curve. Multiplying the order and cofactor give the total number of available points that are on this curve.
+The final part of the ECC key is the data describing the public key. It is encoded in the same manner as the basepoint from before; compression flag, x-coordinate, then (if needed) the y-coordinate. The public key here is used in a similar fashion to the public key in RSA cryptography, however, instead of being generated by multiplying two primes, it is created by adding the basepoint to itself the number of times, as specified in the private key.
+<p>When using a curve encoded without the explicit parameters included, the result is much shorter. Also, since curves, like P-256 and other "NIST Curves", are widely supported in crypto libraries and software packages, the explicit parameters are typically left out and instead replaced with the named curve's identifier. For P-256, the OID is 1.2.840.100.45.3.1.7; this simple set of numbers replaces all of the domain parameters previously described.
+<br><img src="art/cryptoposters/p256.png" alt="p-256 with implicit parameters" >
+<p>Other curves standardized prior to around 2010, such as the ones used in OpenSSL 1.0.1 and earlier, follow these forms of either the, little used, explicit curve or the curve forms with implicit parameters. Examples include other NIST curves or the Brainpool curves.
+<p>One example of an alternate curve using a very similar form is the secp256k1. This is the elliptic curve used in Bitcoin. The only difference between the non-explicit parameter p-256 and secp256k1 is the OID used to identify the curves (and the public / private key pair).
+<br><img src="art/cryptoposters/secp256k1.png" alt="secp256 with implicit parameters" >
+<p>When the explicit parameters are added to the secp256k1, it is easier to see the differences between it and P-256. The first difference is the field size: in 256k1, the field size is slightly larger than the P-256 field. Next, the main difference; constants a and b in this curve are 0 and 7, respectively rather than the much larger a and b from P-256. The k in secp256k1 stands for Koblitz, named after Neal Koblitz, a University of Washington professor. Koblitz curves are known for their speed as well as the lack of a seed of random/unexplained origin. The remaining elements very similar to the p-256 curve.
+<br><img src="art/cryptoposters/secp256k1_exp.png" alt="secp256 with explicit parameters" >
+<p>The next post, ECC (Part 2), will have some newer curves that have been recently gaining popularity and standardization. To make sure you see that when it is published, subscribe on <a href="http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss">Feedly</a>, or anywhere else using <a href="https://www.cem.me/cem.rssf">RSS</a>
+</article>
+
+
+
+
+
 <article>
   <header>
 	  <h1 class="title"><a href="20160108-keychain.html">OS X Keychain Key Export Authentication Bypass</a></h1>
@@ -379,20 +418,6 @@ This was originally released as a series of posts. They are still available here
 </article>
 
 
-
-<article>
-  <header>
-	  <h1 class="title"><a href="20141019-tls-quotes.html">TLS Quotes</a></h1>
-	  <time class="pubdate" datetime="2014-10-19">2014-10-19</time>
-
-  </header>
-  <p>Just some completely random quotes about TLS following the POODLE vulnerability.</p>
-  <blockquote><p>"Remember, everything less than TLS 1.2 with an AEAD mode is cryptographically broken."<br />
-  -<a href="https://www.imperialviolet.org/2014/10/14/poodle.html" target="_blank">Adam Langley</a></p></blockquote>
-  <blockquote><p>"TLS_FALLBACK_SCSV is mainly about those vulnerabilities that we *can't* list <a href="https://datatracker.ietf.org/doc/draft-ietf-tls-downgrade-scsv/" target="_blank">there</a> yet."<br />&mdash; <a href="http://www.ietf.org/mail-archive/web/tls/current/msg13926.html" target="_blank">Bodo Möller</a></p></blockquote>
-</article>
-
-
 <article>
   <header>
 	  <h1 class="title"><a href="papers/emailcerts.html">[Not?] Misissued Certificates:</a></h1>
@@ -403,27 +428,6 @@ This was originally released as a series of posts. They are still available here
   <p>Four years ago, in 2010, <a target="_blank" href="https://www.seifried.org/security/">Kurt Seifried</a> released <a target="_blank" href="http://www.linux-magazine.com/w3/issue/114/054-055_kurt.pdf">research</a> on how certificate authorities (CAs) validated hostnames in SSL certificate requests. <a href="https://afreak.ca/blog/author/ckeigher/" target="_blank">Colin Keigher</a> followed on by with an <a href="https://afreak.ca/blog/whos-letting-me-become-ssladmin/" target="_blank">actual implementation</a> of that research resulting in his finding of five email providers that allowed the registering of addresses, which effectively allowed him to garner certificates for those domains.</p>
   <p>I found that this avenue for procuring certificates still exists in at least two mail providers, which means that I was able to get upwards of 2,500 certificates for various domains that I do not own.</p>
   <p><a href="papers/emailcerts.html">[...READ MORE...]</a></p>
-</article>
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="papers/hpkpwn.html">Bug in Chrome security feature can fill up your hard drive &amp; crash the browser</a></h1>
-	  <time class="pubdate" datetime="2014-02-20">2014-02-20</time>
-
-  </header>
-  <p>The security feature in question is one that I have <a target="_blank" href="20121201-cert-pinning.html">talked about before</a>: HTTP Public Key Pinning (<a target="_blank" href="https://tools.ietf.org/html/draft-ietf-websec-key-pinning">HPKP</a>). This feature allows a website to tell the browser only to connect to the site if it is using a particular set of SSL certificates. For example, a site can specify that the browser only use a particular CA (certificate authority) or set of CAs when communicating with its servers.</p>
-  <p>On to <a target="_blank" href="https://code.google.com/p/chromium/issues/detail?id=316032">the bug</a>...</p>
-  <p>Without <a target="_blank" href="https://codereview.chromium.org/86043003/">this patch</a> an evil website has the ability to fill up your hard drive, or at least up to about 16 <a target="_blank" href="http://en.wikipedia.org/wiki/Exabyte">exabytes</a>.</p>
-  <p><a href="papers/hpkpwn.html">[...READ MORE...]</a></p>
-
-</article>
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="all.html">[...more...]</a></h1>
-  </header>
 </article>
 
 
