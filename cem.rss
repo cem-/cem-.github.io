@@ -26,7 +26,7 @@
   <p>The private key structure is contained in the typical sequence wrapper and begins with a version indicator (currently at 0), followed by the private key algorithm OID wrapped in an ASN.1 sequence, and finally the private key (simply a large random number), encoded as an octet string wrapped in an octet string.
   <p>The public key structure is likewise a sequence wrapper containing an algorithm OID inside a sequence, followed by a bit string containing the x coordinate of the public key. As is possible in the SEC encoded keys, just the x coordinate is encoded in both x25519 and x448 public keys and leave the party utilizing the public key to reconstitute the y coordinate as needed.
 
-<p>X25519 is used in nearly three quarters <a href="https://grafana.wikimedia.org/dashboard/db/tls-ciphersuite-explorer" target="_blank">half</a> the key exchanges on parts of the Internet today. Of course, this new x25519 RFC allows a standard way to encode the key for use in certificates. 
+<p>X25519 is used in nearly <a href="https://grafana.wikimedia.org/dashboard/db/tls-ciphersuite-explorer" target="_blank">three quarters</a> the key exchanges on parts of the Internet today. Of course, this new x25519 RFC allows a standard way to encode the key for use in certificates. 
   <br><img src="https://www.cem.me/art/cryptoposters/x25519.png" alt="X25519 Private and Public Keys" > 
   <p>X448 on the other hand, has less implementations, and may take a bit longer to gain popularity. 
   <br><br><img src="https://www.cem.me/art/cryptoposters/x448.png" alt="X448 Private and Public Keys" >
