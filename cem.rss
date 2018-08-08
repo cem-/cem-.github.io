@@ -17,6 +17,45 @@
       <webMaster>c+blog@cem.me (Carl Mehner)</webMaster>
 
     <item>
+        <title>ECC Keys (Part 2)</title>
+        <link>https://www.cem.me/20180808-ecc-2.html</link>
+    <description><![CDATA[
+  <p>In the <a href="https://www.cem.me/20170410-ecc-1.html">previous post</a>, all of the curves were based on the same encoding type from the Standards for Efficient Cryptography (SEC).
+  <p>These two curves are encoded differently; moving away from the SEC-style encodings, the x25519 and x448 (or "Goldilocks") curves are newer curves and have recently been standardized by the <a href="https://tools.ietf.org/html/rfc8410">IETF</a>. The next step for wider spread adoption of these curves within the TLS ecosystem, such as using them as the key for TLS certificates, is to get them approved by the CA/Browser Forum as an acceptable key type (which could possibly also require support by HSM manufactures). Afterwards, browsers or other clients or servers would need to add support.
+  <p>Looking at the actual encoded keys, there is one form for the public and one for the private key. This means that the structure for encoding x25519 public and private keys is identical to the keys in x448.
+  <p>The private key structure is contained in the typical sequence wrapper and begins with a version indicator (currently at 0), followed by the private key algorithm OID wrapped in an ASN.1 sequence, and finally the private key (simply a large random number), encoded as an octet string wrapped in an octet string.
+  <p>The public key structure is likewise a sequence wrapper containing an algorithm OID inside a sequence, followed by a bit string containing the x coordinate of the public key. As is possible in the SEC encoded keys, just the x coordinate is encoded in both x25519 and x448 public keys and leave the party utilizing the public key to reconstitute the y coordinate as needed.
+
+<p>X25519 is used in nearly three quarters <a href="https://grafana.wikimedia.org/dashboard/db/tls-ciphersuite-explorer" target="_blank">half</a> the key exchanges on parts of the Internet today. Of course, this new x25519 RFC allows a standard way to encode the key for use in certificates. 
+  <br><img src="https://www.cem.me/art/cryptoposters/x25519.png" alt="X25519 Private and Public Keys" > 
+  <p>X448 on the other hand, has less implementations, and may take a bit longer to gain popularity. 
+  <br><br><img src="https://www.cem.me/art/cryptoposters/x448.png" alt="X448 Private and Public Keys" >
+
+<p> How might this look in an X.509 certificate for use in the Web PKI? For one thing, these curves could be used in places where a very small, yet still-as-strong certificate is desired. Notice the x25519 cert below (from the RFC) is only 304 bytes, while the leaf certificate for Google’s homepage is nearly 2 kilobytes.
+<br>
+<div class="snippet">
+<pre><code>
+-----BEGIN CERTIFICATE-----
+MIIBLDCB36ADAgECAghWAUdKKo3DMDAFBgMrZXAwGTEXMBUGA1UEAwwOSUVURiBUZX
+N0IERlbW8wHhcNMTYwODAxMTIxOTI0WhcNNDAxMjMxMjM1OTU5WjAZMRcwFQYDVQQD
+DA5JRVRGIFRlc3QgRGVtbzAqMAUGAytlbgMhAIUg8AmJMKdUdIt93LQ+91oNvzoNJj
+ga9OukqY6qm05qo0UwQzAPBgNVHRMBAf8EBTADAQEAMA4GA1UdDwEBAAQEAwIDCDAg
+BgNVHQ4BAQAEFgQUmx9e7e0EM4Xk97xiPFl1uQvIuzswBQYDK2VwA0EAryMB/t3J5v
+/BzKc9dNZIpDmAgs3babFOTQbs+BolzlDUwsPrdGxO3YNGhW7Ibz3OGhhlxXrCe1Cg
+w1AH9efZBw==
+-----END CERTIFICATE-----
+</code>
+</pre>
+</div>
+
+
+        ]]>
+        </description>
+        <pubDate>Wed, 08 Aug 2018 08:08:08 -0000</pubDate>
+        <guid>https://www.cem.me/20180808-ecc-2.html</guid>
+    </item>
+
+    <item>
         <title>ECC keys (Part 1)</title>
         <link>https://www.cem.me/20170410-ecc-1.html</link>
     <description><![CDATA[
