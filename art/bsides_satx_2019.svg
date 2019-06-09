@@ -9526,18 +9526,16 @@ and get this punched at the village desk"
          x="782.80975"
          y="623.17206"
          style="stroke-width:0.9375px"> </tspan></text>
-    <text
-       xml:space="preserve"
+    <g
+       aria-label="L"
+       transform="rotate(-45.280256)"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:143.84544373px;line-height:114.99999762%;font-family:Sans;-inkscape-font-specification:'Sans, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:8.99034023px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-31.495918"
-       y="1068.7086"
-       id="text1195"
-       transform="rotate(-45.280256)"><tspan
-         sodipodi:role="line"
-         id="tspan1193"
-         x="-31.495918"
-         y="1068.7086"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Webdings;-inkscape-font-specification:Webdings;stroke-width:8.99034023px">L</tspan></text>
+       id="text1195">
+      <path
+         d="m 64.026447,996.50495 q 0,11.30815 -5.829674,18.33185 -6.251096,7.5856 -17.348547,7.5856 -11.589111,0 -18.963999,-10.0439 -6.742755,-9.1308 -6.742755,-21.07109 0,-24.44249 22.546087,-24.44249 11.097452,0 18.963999,9.41176 7.374889,8.84987 7.374889,20.22827 z m -19.244947,37.92795 -2.388059,-0.913 -1.053556,-8.0071 h -1.123793 l 0.772608,7.5856 h -0.842845 q -2.107111,0 -5.057066,1.4048 -3.230903,1.475 -3.863037,3.0904 l -2.458296,-11.7296 q -8.849866,-0.4214 -15.803332,-8.4284 -7.1641777,-8.288 -7.1641777,-19.10449 0,-10.39508 3.7225627,-16.01404 2.107111,-3.30114 11.448636,-11.16769 -7.79631,8.35821 -7.79631,19.94732 0,12.3617 6.602281,21.8437 7.445125,10.6058 19.315184,10.6058 1.755926,0 4.214222,0 z m 6.461807,45.3029 q 0,2.3881 -2.036874,4.2143 -2.036874,1.8261 -4.635644,1.8261 -2.739245,0 -4.916593,-2.0369 -1.8964,-1.7559 -2.107111,-3.582 l -5.759436,-40.1756 q -0.351186,-2.2476 2.879718,-3.9333 3.020192,-1.6155 6.742755,-1.6155 2.528533,0 3.7928,2.3179 l 5.267777,37.928 z m 10.535555,-83.44156 q 0,-10.32485 -6.812993,-18.33187 -7.164177,-8.49868 -17.27831,-8.49868 -20.368739,0 -20.368739,22.12467 0,10.88674 6.180859,19.17474 6.742755,9.1308 17.208073,9.1308 10.114132,0 15.803332,-6.8832 5.267778,-6.3916 5.267778,-16.71646 z m -1.545215,0.7726 q 0,14.89026 -13.415273,20.93066 8.428444,-9.5523 8.428444,-20.22829 0,-10.39508 -6.532045,-17.20807 -6.532044,-6.88323 -16.856887,-7.23441 3.090429,-1.33451 6.742755,-1.33451 9.130814,0 15.592621,8.07726 6.040385,7.5856 6.040385,16.99736 z m -11.659348,-2.24758 q 0,5.89994 -5.759436,11.02724 0.70237,-5.5488 0.70237,-7.86657 0,-4.00352 -2.739244,-8.28797 -1.053556,-1.61546 -5.548726,-7.09394 5.267778,0.21071 9.201051,3.58208 4.143985,3.58209 4.143985,8.63916 z m -21.633006,12.99384 q -2.879718,-0.9833 -4.705881,-5.9701 -1.545215,-4.07379 -1.545215,-7.86659 0,-4.63564 2.388059,-7.37488 2.528534,9.27128 3.863037,21.21157 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Webdings;-inkscape-font-specification:Webdings;stroke-width:8.99034023px"
+         id="path3785" />
+    </g>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.9354229px;line-height:114.99999762%;font-family:Sans;-inkscape-font-specification:'Sans, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.74596393px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
