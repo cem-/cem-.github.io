@@ -10,6 +10,8 @@
 
 ![bsidesSATX 2019](https://www.cem.me/art/bsides_satx_2019.svg "B-Sides SATX CryptoVillage")
 
+</article>
+
 ___
 
 <article markdown="1">
