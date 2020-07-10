@@ -4,7 +4,7 @@
   
 # [BSides SATX 2019 Puzzle Answer Guide](bsides2019.md)
 
-<time class="pubdate" datetime="2019-06-07">2019-06-07</time>
+<time markdown="1" class="pubdate" datetime="2019-06-07">2019-06-07</time>
 
 #### B Sides SATX 2019 Cryptography Village
 
