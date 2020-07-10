@@ -15,21 +15,17 @@ ___
 <article markdown="1">
 
 <header markdown="1">
- 
+
 # Puzzle 1
 
 #### clue: beware the ides of march
 
 </header>
 
-this refers to the caesar cipher
+> this refers to the caesar cipher
 
 DW UVD WKH QVD UHOHDVHG JKLGUD D UHYHUVH HQJLQHHULQJ WRRO WR ULYDOV LGD KXHWXC
 
 __AT RSA THE NSA RELEASED GHIDRA A REVERSE ENGINEERING TOOL TO RIVALS IDA HUETUZ__
-
-</article>
-
-
 
 </article>
