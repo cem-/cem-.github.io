@@ -8,11 +8,8 @@
 
 #### B Sides SATX 2019 Cryptography Village
 
-</header>
-
 ![bsidesSATX 2019](https://www.cem.me/art/bsides_satx_2019.svg "B-Sides SATX CryptoVillage")
 
-</article>
 
 ___
 
