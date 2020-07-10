@@ -2,7 +2,6 @@
 
 <header>
   
-{:.title}
 # [BSides SATX 2019 Puzzle Answer Guide](bsides2019.md)
 
 <time class="pubdate" datetime="2019-06-07">2019-06-07</time>
@@ -21,7 +20,6 @@ ___
 
 <header>
   
-{:.title}
 # Puzzle 1
 
 #### clue: beware the ides of march
@@ -42,7 +40,6 @@ __AT RSA THE NSA RELEASED GHIDRA A REVERSE ENGINEERING TOOL TO RIVALS IDA HUETUZ
 
 <header>
   
-{:.title}
 # Puzzle 2
 
 #### clue: et tu brute
@@ -62,7 +59,6 @@ __ANSIBLE IS AN AUTOMATION TOOL THAT USES YAML TO DESCRIBE TASKS IN A SIMPLE LAN
 
 <header>
   
-{:.title}
 # Puzzle 3
 
 #### clue: Start Halfway
@@ -82,7 +78,6 @@ __ARTHIR IS AN INCIDENT RESPONSE TOOL CAN RUN SCRIPTS AND BINARY UTILITIES ON RE
 
 <header>
   
-{:.title}
 # Puzzle 4
 
 #### clue: @ #!/bin/sh
@@ -101,7 +96,6 @@ __MISCONFIGURATIONINELASTICSEARCHANDMONGODBCANLEADTOLEAKYDATABASES UATPEH__
 
 <header>
   
-{:.title}
 # Puzzle 5
 
 #### clue: Four Square is a: Fun Game
@@ -121,7 +115,6 @@ __EVENTHEBRANDNEWFIVEGNETWORKSHAVESECURITYANDPRIVACYCONCERNS HEICAH__
 
 <header>
   
-{:.title}
 # Puzzle 6
 
 #### clue: Skip Some
@@ -140,7 +133,6 @@ __CLOUDMETADATAURLSHOLDCONFIGURATIONINFOANDSOMETIMESSECRETKEYSANDPASSWORDS UZPMM
 
 <header>
   
-{:.title}
 # Puzzle 7
 
 #### clue: "hunting" for Delastelle
@@ -159,7 +151,6 @@ __THEEVENTQUERYLANGUAGEISFORHUNTINGANDDETECTIONORREALTIMEANALYTICS MWZHAO__
 
 <header>
   
-{:.title}
 # Puzzle 8
 
 #### clue: AFF / INE / ENC
@@ -178,7 +169,6 @@ __THEWIEGANDPROTOCOLISUSEDINCARDREADERSFORACCESSCONTROLSYSTEMS EZNTCE__
 
 <header>
   
-{:.title}
 # Puzzle 9
 
 #### clue: Tell Count Gronsfeld the year where an EPOC problem may occur
@@ -198,7 +188,6 @@ __PDPCOMPUTERSUSEDPUNCHEDTAPETOINPUTINSTRUCTIONSEIGHTBITSATATIME JTHMPS__
 
 <header>
   
-{:.title}
 # Puzzle 10
 
 #### clue: ¯\_(ツ)_/¯  (there's no clue!)
