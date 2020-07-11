@@ -12,7 +12,7 @@ Answer Guide
 
 ![bsidesSATX 2020](https://www.cem.me/art/bsides2020.png "BSides SATX CryptoPuzzle")
 
-[Alternate version with no background](https://www.cem.me/art/bsides20_nobackground.svg)
+[Alternate version with no background](https://raw.githubusercontent.com/cem-/cem-.github.io/8976513e4536dffe9a89acaf44a7958739e538c3/art/bsides20_nobackground.svg)
 
 </article>
 
