@@ -2,11 +2,11 @@
 
 <header markdown="1">
   
-# [BSides SATX 2019 Puzzle Answer Guide](bsides2019.md)
+# [BSides SATX 2020 Puzzle Answer Guide](bsides2020.md)
 
-<time class="pubdate" datetime="2019-06-07">2019-06-07</time>
+<time class="pubdate" datetime="2020-07-11">2020-07-11</time>
 
-#### Puzzle from the BSides SATX 2019 Cryptography Village
+#### Puzzle for the BSides SATX 2020 Cryptography Village
 
 </header>
 
@@ -15,17 +15,13 @@
 <article markdown="1">
 
 <header markdown="1">
+  
+# [BSides SATX 2019 Puzzle Answer Guide](bsides2019.md)
 
-# Puzzle 1
+<time class="pubdate" datetime="2019-06-07">2019-06-07</time>
 
-#### clue: beware the ides of march
+#### Puzzle for the BSides SATX 2019 Cryptography Village
 
 </header>
-
-> this refers to the caesar cipher
-
-DW UVD WKH QVD UHOHDVHG JKLGUD D UHYHUVH HQJLQHHULQJ WRRO WR ULYDOV LGD KXHWXC
-
-__AT RSA THE NSA RELEASED GHIDRA A REVERSE ENGINEERING TOOL TO RIVALS IDA HUETUZ__
 
 </article>
