@@ -10,24 +10,9 @@ Answer Guide
 
 </header>
 
-![bsidesSATX 2020](https://www.cem.me/art/bsides_satx_2020.svg "BSides SATX CryptoPuzzle")
+![bsidesSATX 2020](https://www.cem.me/art/bsides20.png "BSides SATX CryptoPuzzle")
+
+[Alternate version with no background](https://www.cem.me/art/bsides20_nobackground.svg)
 
 </article>
 
-<article markdown="1">
-
-<header markdown="1">
-
-# Puzzle 1
-
-#### clue: 
-
-</header>
-
-> .
-
-CIPHER
-
-__plaintext__
-
-</article>
