@@ -6,7 +6,9 @@
 
 <time class="pubdate" datetime="2019-06-07">2019-06-07</time>
 
-#### B Sides SATX 2019 Cryptography Village
+#### Puzzle from the BSides SATX 2019 Cryptography Village
+
+</header>
 
 </article>
 
