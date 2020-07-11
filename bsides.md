@@ -12,6 +12,10 @@
 
 </article>
 
+![bsidesSATX 2020](https://www.cem.me/art/bsides2020.png "BSides SATX CryptoPuzzle")
+
+[Alternate version with no background](https://raw.githubusercontent.com/cem-/cem-.github.io/8976513e4536dffe9a89acaf44a7958739e538c3/art/bsides20_nobackground.svg)
+
 <article markdown="1">
 
 <header markdown="1">
@@ -23,5 +27,7 @@
 #### Puzzle for the BSides SATX 2019 Cryptography Village
 
 </header>
+
+![bsidesSATX 2019](https://www.cem.me/art/bsides_satx_2019.svg "B-Sides SATX CryptoVillage")
 
 </article>
