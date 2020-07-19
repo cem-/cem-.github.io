@@ -21,7 +21,7 @@
         <link>https://www.cem.me/20200718-BSides-SATX</link>
     <description><![CDATA[
 <p>I recently gave talk a at <a href="https://www.bsidessatx.com/">BSides SATX - 2020</a>, on Symmetric Encryption. In it I presented some new diagrams I created to depict AES-GCM and ChaCha20-Poly1305 AEAD algorithms.</p>
-<p><b>Synopsis:</b> Encryption has significantly changed over the past 20 years but most examples in textbooks and classes show the same encryption modes used from the '70s through the turn of the century. Modern browsers, APIs, and platforms use different and more secure methods to protect data. <a href="20200718-BSides-SATX">[...READ the TALK...]</a></p>
+<p><b>Synopsis:</b> Encryption has significantly changed over the past 20 years but most examples in textbooks and classes show the same encryption modes used from the '70s through the turn of the century. Modern browsers, APIs, and platforms use different and more secure methods to protect data. <a href="https://www.cem.me/20200718-BSides-SATX">[...READ the TALK...]</a></p>
         ]]>
         </description>
         <pubDate>Sat, 18 Jul 2020 23:50:23 -0000</pubDate>
