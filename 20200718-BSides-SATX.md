@@ -8,8 +8,6 @@
 
 </header>
 
-# Modern Symmetric Encryption 🔒
-
 ## The beginnings of encryption
 
 ### Classical Encryption
