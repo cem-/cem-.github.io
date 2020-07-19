@@ -38,7 +38,7 @@ Or go into the full detail of the cipher down to following each individual byte 
 
 Or even in a more fun format like this…
 
-[![Stick Figure AES](http://www.moserware.com/assets/stick-figure-guide-to-advanced/aes_act_4_scene_17_crib_sheet_576.png)](http://www.moserware.com/assets/stick-figure-guide-to-advanced/aes_act_4_scene_17_crib_sheet_576.png)
+[![Stick Figure AES](https://www.moserware.com/assets/stick-figure-guide-to-advanced/aes_act_4_scene_17_crib_sheet_576.png)](https://www.moserware.com/2009/09/stick-figure-guide-to-advanced.html)
 
 The problem is, when you do that you end up looking like you’re trying to explain a [conspiracy theory](https://knowyourmeme.com/memes/pepe-silvia).
 
