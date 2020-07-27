@@ -1,44 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Keystore Posters - cem</title>
-	<meta name="author" content="Carl Mehner">
-<link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://www.cem.me/cem.rss">
+<article markdown="1">
 
-    
-	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="cem.css" />
-    <script src="cem.js" ></script>	
-</head>
+<header markdown="1">
+ 
+# Certificate Binary Posters (Part Six)
 
-<body>
+<time class="pubdate" datetime="2015-03-15">2015-03-15</time>
 
-<header>
-        <nav>
-                <object type="image/svg+xml" data="art/navL.svg" id="navLeft"></object>
-                <object type="image/svg+xml" data="art/navR.svg" id="navRight"></object>
-        </nav>
-    
-        <section id="topTitle">
-                <p>&nbsp;</p>
-                <a href="https://www.cem.me/index.html">
-                        <img class=mainLogo src="art/cem.svg" alt="cem.me"/>
-                </a><br />
-                <h2>carl mehner's blog</h2>
-        </section>
 </header>
-<!-- -above is template for headers and style- -->
 
-
-<article>
-  <header>
-	  <h1 class="title"><a href="#">Certificate Binary Posters (Part Six)</a></h1>
-	  <time class="pubdate" datetime="2015-03-15">2015-03-15</time>
-
-  </header>
 <p>One thing that is <a href="20141221-cert-binaries.html">noticeably</a>, <a href="20150104-cert-binaries-2.html">different</a>, <a href="20150121-cert-binaries-3.html">from</a>, <a href="20150209-cert-binaries-4.html">previous</a>, <a href="20150301-cert-binaries-5.html">posters</a> is that these formats are not encoded in base64, they are binary files. Most of the other files can be interpreted by cryptosystems in both binary and base64, and we typically transport them by first encoding them in base64.</p>
 <p>In these formats, in order to show the binary in a visual representation I used <a href="https://en.wikipedia.org/wiki/Netpbm_format#PGM_example">Netpbm</a> (<b>Net</b>work <b>p</b>ortable <b>b</b>itmap for<b>m</b>at) with the PGM (<b>P</b>ortable <b>G</b>ray<b>m</b>ap) format to translate the hexadecimal values into a format easier for humans to visualize. (A more fun format would be to <a href="https://gist.github.com/windytan/7910910/">use emoji</a>, but that would not fit quite as well with the rest of the poster).</p>
 <img src="art/emoji.png" alt="emoji pfx" />vs<img src="art/pgm.png" alt="pgm jks" />
@@ -48,22 +17,13 @@
 <code>-certpbe AES-256-CBC -keypbe AES-256-CBC</code></p>
 <p>Of course, at the moment, the strength is predominantly up to the password used as the best way to defeat even the Windows version is to use a password list. This is somewhat slowed by the number of rounds the key derivation algorithm is passed through; 2000 on pfx files generated via Windows and 2048 by default from OpenSSL.</p>
 
-<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6188670109886384946" target="_blank"><img src="art/cryptoposters/p12.png" alt="pfx"/></a>
+<a href="art/cryptoposters/p12.png" target="_blank"><img src="art/cryptoposters/p12.png" alt="pfx"/></a>
 
 <p>Java has its own proprietary format that it named JKS, which stands for Java KeyStore.</p> <p>While the p12 format is binary encoded ASN.1, jks format files are a strange mix of binary and ASN.1. The file begins with a "magic number" as <a href="http://en.wikipedia.org/wiki/List_of_file_signatures">many other</a> binary files do. After that comes a list of different keys or certificates. JKS files are also quite extensible and are able to hold many objects, including lists of chains, certificates, roots, as well as lone private keys. The number of keystore entries is defined at the beginning of the file and the data is listed in a serialized manner. For this example of just an x.509 certificate and key, the entry contains: a plaintext alias, encrypted private key, and plaintext chain.</p>
 <p>Unlike pkcs12, you cannot choose the algorithm used to protect the keys, so everyone is stuck with a proprietary implementation of a password based key derivation scheme using MD5 to create a 3DES key. </p>
 
-<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6188670105645548722" target="_blank"><img src="art/cryptoposters/jks.png" alt="jks" /></a>
+<a href="art/cryptoposters/jks.png" target="_blank"><img src="art/cryptoposters/jks.png" alt="jks" /></a>
 
 <p>The moral of the story, is use a long and complex password for either of these formats. Even so, if your keystore does get out, you will need to revoke your certificate. More on that next post.</p>
+
 </article>
-
-<footer>
-	<cite>
-		<a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss' class="feedly"  target='blank'><img id='feedlyFollow' src='art/fd.png' alt='follow me in feedly'></a>
-		Copyright &copy; Carl Mehner</cite>
-</footer>
-
-</body>
-</html>
-

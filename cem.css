@@ -108,6 +108,18 @@ time.pubdate {
 font-size : 0.75em;
 font-style : italic;
 }
+h1 {
+margin-bottom : 0;
+padding-bottom : 0;
+line-height : 1;
+color : darkolivegreen;
+}
+h1 a {
+margin-bottom : 0;
+padding-bottom : 0;
+line-height : 1;
+color : darkolivegreen;
+}
 h1.title {
 margin-bottom : 0;
 padding-bottom : 0;

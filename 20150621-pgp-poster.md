@@ -1,45 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>PGP Poster - cem</title>
-	<meta name="author" content="Carl Mehner">
-<link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://www.cem.me/cem.rss">
+<article markdown="1">
 
-    
-	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="cem.css" />
-    <script src="cem.js" ></script>	
-    <meta name="theme-color" content="darkolivegreen" />
-</head>
+<header markdown="1">
+ 
+# PGP Public Key
 
-<body>
-<header>
-        <nav>
-                <object type="image/svg+xml" data="art/navL.svg" id="navLeft"></object>
-                <object type="image/svg+xml" data="art/navR.svg" id="navRight"></object>
-        </nav>
-    
-        <section id="topTitle">
-                <p>&nbsp;</p>
-                <a href="https://www.cem.me/index.html">
-                        <img class=mainLogo src="art/cem.svg" alt="cem.me"/>
-                </a><br />
-                <h2>carl mehner's blog</h2>
-        </section>
+<time class="pubdate" datetime="2015-06-21">2015-06-21</time>
+
 </header>
 
-
-<!-- -above is template for headers and style- -->
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="#">PGP Public Key</a></h1>
-	  <time class="pubdate" datetime="2015-06-21">2015-06-21</time>
-  </header>
   <p>Pretty Good Privacy (PGP) has been around since 1991, it has since gained notoriety and ubiquity as one of the most popular<sup>[citation needed]</sup> person to person publication privacy programs. Now <a href="https://keybase.io/cem_">keybase.io</a> and even <a href="https://www.facebook.com/notes/protecting-the-graph/securing-email-communications-from-facebook/1611941762379302">Facebook</a> are allowing users to receive encrypted communications from their systems, whether or not that is a <a href="http://blog.cryptographyengineering.com/2014/08/whats-matter-with-pgp.html">good idea</a>.</p> 
 
 <p>After learning about the ins and outs of <a href="https://www.cem.me/pki/index.html">certificate structures</a>, I tuned to PGP to learn how they are put together. Some of it is quite elegant, and allows the format to save space, especially in the packet headers where 2 bytes can convey essentially the same information that take 6 bytes in <a href="https://www.cem.me/20150209-cert-binaries-4.html">x.509</a>. PGP keys are made up of these packets, each packet is used to convey information about the key as a whole. By default, a key has 5 packets; Public Key (for signing), User ID (just text), Signature packet (times, algorithms, settings, and the Signature [over the Public Key, User ID, and most of the signature packet]), sub-key (for encrypting), and the sub-key signature.</p>
@@ -52,14 +20,5 @@
 
 <p><a href="http://www.redbubble.com/people/cem-/works/15307088-pgp-public-key?c=377869-pki-posters" target="_blank">You can get a copy printed out here</a><p>
 <a href="https://dl.dropboxusercontent.com/u/25625347/PGP_Pub.png" target="_blank"><img src="https://lh3.googleusercontent.com/-JeDlyJY4fc8/VYpFna9YeMI/AAAAAAAAGwQ/_ySxho-jhwM/s800/PGP_Pub.png" alt="PGP Public Key" /></a>
+
 </article>
-
-<footer>
-	<cite>
-		<a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss' class="feedly"  target='blank'><img id='feedlyFollow' src='art/fd.png' alt='follow me in feedly'></a>
-		Copyright &copy; Carl Mehner</cite>
-</footer>
-
-</body>
-</html>
-

@@ -1,43 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>x.509 Poster - cem</title>
-	<meta name="author" content="Carl Mehner">
-<link rel="alternate" type="application/rss+xml" title="RSS"
-      href="https://www.cem.me/cem.rss">
+<article markdown="1">
 
-    
-	<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAiNJREFUOI2Nks9LVFEcxT/3vjfm+KOZTDAnzUmxZtoUoqFhktAPhBbTrj9AJLBFhC1CSqZdCbaIgnYt3ES0DCvNgqhAiEqJJq0JBx1FR+nNOM5T37zbopkhwhk8q8vhnvO953uP6FIDAI3mXPxMYmrJo9K2pAC00iJzb6f3CzAGJHWgfrp//JE5H29FUVCcRXR4cv3ApeZbrhbPbR04tLG4dhSFRGBVBXxDVQHfJ0D7Xzh943WPGTE6lGWXxMbC7a4Wz10d/pkqhF0V8I0DL0ZEMEdnYlK8v/y0GTE6ALCVBIS+kyfn/HVpIcUWSgmhCQtQ+QxElxo4DsSAn1mytrvpQUn9nrld1eVGmb/yLWBttzQFuEN9Lx+Gro0+AY5lTa21zaaFx197k6GYB/gI5P0yoRSao8I5Hx58fxPwAxdn700E9PKihXRy05m9mH8HtpIH+048lQ6Zmhl4c18rK/rdcL29P3znXVD9XWBBgy1nnWtKOuQy8KwxeMoAIkDI6XX/cta5lwoZCCDhvdLaDWxkuOcAqVmjN/l95UhyZtWHrYS7rWYwb4QREVzLnrM9WB6ZaV7/sXoOYAWUu61maEfVLQQdSCNQACglo8OT5yvPNng756/mzM1oAoBUxDicU2oiTaZI34prdk+kZo2T2EqPjYYvx0bD+UcKbOHQ4vsu+F8BmyKTrxboiH9erFaWLYUUajutspXQXcVmaWPFFPABMP8AmgnNwTEAUpoAAAAASUVORK5CYII="> 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="cem.css" />
-    <script src="cem.js" ></script>	
-</head>
+<header markdown="1">
+ 
+# Certificate Binary Posters (Part Four)
 
-<body>
-<header>
-        <nav>
-                <object type="image/svg+xml" data="art/navL.svg" id="navLeft"></object>
-                <object type="image/svg+xml" data="art/navR.svg" id="navRight"></object>
-        </nav>
-    
-        <section id="topTitle">
-                <p>&nbsp;</p>
-                <a href="https://www.cem.me/index.html">
-                        <img class=mainLogo src="art/cem.svg" alt="cem.me"/>
-                </a><br />
-                <h2>carl mehner's blog</h2>
-        </section>
+<time class="pubdate" datetime="2015-02-09">2015-02-09</time>
+
 </header>
-
-<!-- -above is template for headers and style- -->
-
-
-<article>
-  <header>
-	  <h1 class="title"><a href="#">Certificate Binary Posters (Part Four)</a></h1>
-	  <time class="pubdate" datetime="2015-02-09">2015-02-09</time>
-  </header>
   
   <p><small>If you missed the previous posts, you may want to read them first (<a href="20141221-cert-binaries.html">Part One</a>, <a href="20150104-cert-binaries-2.html">Part Two</a>, <a href="20150121-cert-binaries-3.html">Part Three</a>)</small></p>
   <p>After the certificate authority (CA) receives the <a href="20150121-cert-binaries-3.html">CSR</a>, it signs it, then sends back the TLS cert. You can see two places in this certificate that directly correspond to the CSR (the public key and the DN). There are three main sections within the certificate wrapper: the tbsCertificate data (tbs = to-be-signed), the structure the specifying signature used to sign the cert, and the signature value. The CA crafts the tbsCertificate from the data given in the CSR, adding additional fields before copying the DN and SPKI (subject public key info; aka the PKCS#1 object).</p>
@@ -45,16 +14,6 @@
   <p>Up until now, all of the fields are in x.509v1 certificates, the difference between version 1 and version 3 certificates are that v3 includes the extensions section below the SPKI. Extensions allow for, as the word implies, extensibility. You can have as many or as few extensions as are required, they can be marked critical or noncritical. A critical extension must be understood by the validating software, otherwise the certificate validation must fail. There are rules set by the CA / Browser Forum for which extensions are required for inclusion and which to mark as critical. In this example, (which only follows some of the rules) there is an extension requiring the certificate to be an end-entity (that is not a CA) as well as the AKI (authority key identifier). An AKI is a way to tie a specified end-entity certificate to the certificate that issued it.</p>
   <p>Lastly, the specified signature algorithm uses the CA's private key to sign the bytes from the tbsCertificate, the result is the signature value.</p>
 
-<a href="https://plus.google.com/photos/+CarlMehner/albums/6105920604274654785/6108892262647630978" target="_blank"><img src="art/cryptoposters/x509.png" alt="x.509 certificate" /></a>
+<a href="art/cryptoposters/x509.png" target="_blank"><img src="art/cryptoposters/x509.png" alt="x.509 certificate" /></a>
   
 </article>
-
-<footer>
-	<cite>
-		<a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss' class="feedly"  target='blank'><img id='feedlyFollow' src='art/fd.png' alt='follow me in feedly'></a>
-		Copyright &copy; Carl Mehner</cite>
-</footer>
-
-</body>
-</html>
-
