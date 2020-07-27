@@ -1,3 +1,7 @@
+<article markdown="1">
+  
+<header markdown="1">
+
 # Information Security Awareness Month
 
 <time class="pubdate" datetime="2011-10-04">2011-10-04</time>
