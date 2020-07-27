@@ -16,14 +16,3 @@
   <a href="art/cryptoposters/pubPKCS1.png" target="_blank"><img src="art/cryptoposters/pubPKCS1.png" alt="pkcs1 public key" /></a>
 
 </article>
-
-
-<footer>
-	<cite>
-		<a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss' class="feedly"  target='blank'><img id='feedlyFollow' src='art/fd.png' alt='follow me in feedly'></a>
-		Copyright &copy; Carl Mehner</cite>
-</footer>
-
-</body>
-</html>
-
