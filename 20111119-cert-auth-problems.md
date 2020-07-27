@@ -2,7 +2,7 @@
 
 <header markdown="1">
  
-# Certificate Authorities, the problem is in the app</a></h1>
+# Certificate Authorities, the problem is in the app
 
 <time class="pubdate" datetime="2011-11-19">2011-11-19</time>
 
@@ -17,15 +17,3 @@ This isn't the first sign of poor CA web apps that were written to ease the load
 CAs either need to really work on shoring up their webapps, or the CA Browser Forum needs to revoke their approval status due to use of vulnerable webapps. (This approval would come from the CAs paying for vulnerability tests with an internal and external perview)
 
 </article>
-
-
-
-<footer>
-	<cite>
-		<a href='http://cloud.feedly.com/#subscription%2Ffeed%2Fhttp%3A%2F%2Fwww.cem.me%2Fcem.rss' class="feedly"  target='blank'><img id='feedlyFollow' src='art/fd.png' alt='follow me in feedly'></a>
-		Copyright &copy; Carl Mehner</cite>
-</footer>
-
-</body>
-</html>
-
