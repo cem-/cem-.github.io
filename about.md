@@ -9,7 +9,7 @@
  <div style="margin:1em">
   <header>
     <h1 class="title">Email</h1>
-    <p>First letter and at, followed by my domain
+	  <p>First letter and at, followed by my domain</p>
   </header>
   <header>
     <h1 class="title">ZCash - Shielded Address</h1>
