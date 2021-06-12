@@ -10,7 +10,7 @@ Answer Guide
 
 </header>
 
-![bsidesSATX 2021](https://www.cem.me/art/bsides2021.svg "BSides SATX CryptoPuzzle")
+![bsidesSATX 2021](https://www.cem.me/art/bsides21.svg "BSides SATX CryptoPuzzle")
 
 
 </article>
