@@ -2,6 +2,22 @@
 
 <header markdown="1">
   
+# [BSides SATX 2021 Puzzle Guide](bsides2021.md)
+
+<time class="pubdate" datetime="2020-06-12">2020-06-12</time>
+
+#### Crypto Puzzle for the BSides SATX 2021 Conference
+
+</header>
+
+![bsidesSATX 2021](https://www.cem.me/art/bsides2021.svg "BSides SATX 2021 CryptoPuzzle")
+
+</article>
+
+<article markdown="1">
+
+<header markdown="1">
+  
 # [BSides SATX 2020 Puzzle Answer Guide](bsides2020.md)
 
 <time class="pubdate" datetime="2020-07-11">2020-07-11</time>
