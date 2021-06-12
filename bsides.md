@@ -4,13 +4,13 @@
   
 # [BSides SATX 2021 Puzzle Guide](bsides2021.md)
 
-<time class="pubdate" datetime="2020-06-12">2020-06-12</time>
+<time class="pubdate" datetime="2021-06-12">2021-06-12</time>
 
 #### Crypto Puzzle for the BSides SATX 2021 Conference
 
 </header>
 
-![bsidesSATX 2021](https://www.cem.me/art/bsides2021.svg "BSides SATX 2021 CryptoPuzzle")
+![bsidesSATX 2021](https://www.cem.me/art/bsides21.svg "BSides SATX 2021 CryptoPuzzle")
 
 </article>
 
