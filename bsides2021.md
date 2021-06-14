@@ -90,10 +90,10 @@ Answers: botnet, bot-net
 
 </header>
 
+TI OD SE TON OH L SD O M TE NIH WSG TEE WOH VE TRE SIH O L TRED RE WONM OG SE YB T H PE RH SA E ED TPEC OI TN E ONHC OL YG
+
 <details>
   <summary>Click to expand for Answer!</summary>
-
-TI OD SE TON OH L SD O M TE NIH WSG TEE WOH VE TRE SIH O L TRED RE WONM OG SE YB T H PE RH SA E ED TPEC OI TN E ONHC OL YG
 
 > A rearview mirror shows the reverse of what is in front of you, if you reverse each group of letters you get the plaintext.
 
@@ -328,17 +328,17 @@ __boop the snoots of the sneks, then everything will add up__
 
 </article>
 
-<details>
-  <summary>Click to expand for 10b</summary>
-
 <header markdown="1">
 
 # Puzzle 10b
 
-#### Clue: boop the snoots of the sneks, then everything will add up
-
 </header>
 
+<details>
+  <summary>Click to expand for 10b</summary>
+
+#### Clue: boop the snoots of the sneks, then everything will add up
+  
 > Clicking the noses on the snake heads will change the picture to reveal two colored disks. looking carefully at the colorful disks, you will see bright red markers on the cardinal points. Dragging the bottom disk atop the other will reveal a hidden set of letters
 
 Letter Addition
