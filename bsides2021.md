@@ -1,6 +1,6 @@
-<article markdown="1">
+<article >
 
-<header markdown="1">
+<header >
 
 # BSides SATX 2021 Crypto Puzzle
 
