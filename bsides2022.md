@@ -86,7 +86,7 @@ IIASCSSSEEHIRPEINNHSEREERHRFRTBEVDHATAKNGOPINEKTETYRAEIORTPCGUORT
 
 # Puzzle 5
 
-#### clue: times 21 minus 18. a=0
+#### clue: times 21 minus 14. a=0
 
 </header>
 
