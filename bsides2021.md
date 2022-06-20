@@ -1,6 +1,6 @@
-<article >
+<div><article>
 
-<header >
+<header>
 
 # BSides SATX 2021 Crypto Puzzle
 
@@ -13,12 +13,12 @@ Answer Guide
 ![bsidesSATX 2021](https://www.cem.me/art/bsides21.svg "BSides SATX CryptoPuzzle")
 
 
-</article>
+</article></div>
 
 
-<article markdown="1">
+<article>
 
-<header markdown="1">
+<header>
 
 # Puzzle 1
 
