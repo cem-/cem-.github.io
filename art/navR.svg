@@ -102,7 +102,8 @@
   </a>
   <a
      id="a6714"
-     xlink:href="https://mastodon.xyz/web/accounts/2212"
+     rel="me"
+     xlink:href="https://infosec.exchange/@cem"
      target="_blank"
      transform="translate(19.1004)">
     <g
