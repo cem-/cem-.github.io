@@ -2,7 +2,7 @@
 
 <header markdown="1">
   
-# [BSides SATX 2025 Puzzle Guide](bsides2025.md)
+# [BSides SATX 2025 Puzzle Guide](bsides25.md)
 
 <time class="pubdate" datetime="2025-06-21">2025-06-21</time>
 
