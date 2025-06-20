@@ -2,6 +2,22 @@
 
 <header markdown="1">
   
+# [BSides SATX 2025 Puzzle Guide](bsides2025.md)
+
+<time class="pubdate" datetime="2025-06-21">2025-06-21</time>
+
+#### Crypto Challenge for the BSides SATX 2025 Conference
+
+</header>
+
+[![bsidesSATX 2025](https://www.cem.me/art/bsides25.png "BSides SATX 2025 Crypto Challenge")](https://www.cem.me/art/bsides25.pdf)
+
+</article>
+
+<article markdown="1">
+
+<header markdown="1">
+  
 # [BSides SATX 2023 Puzzle Guide](bsides2023.md)
 
 <time class="pubdate" datetime="2023-06-10">2023-06-10</time>
