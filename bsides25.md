@@ -9,7 +9,7 @@
 ## Welcome to the BSidesSATX 2025 Crypto Puzzle!
 
 ATTENTION: the clue for puzzle 5 has changed to "UGSOC BQNDU UDUMG ROHGK FRCKK GOIBQ UMXBE BKVGB"
-ATTENTION: the clue for puzzle 6 has changed to "MZMORXUVGEEMKHFZHMOH"
+ATTENTION: the clue for puzzle 6 has changed to "MZMORXUVGEEMKHFZHMOXNGPJSTK"
 
 The puzzle image is provided as a downloadable link below.
 Free Hints are hidden in the puzzle image! Make sure you read the Rules.. they may help you…
