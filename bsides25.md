@@ -18,7 +18,7 @@ You will need a raffle ticket as part of the puzzle this year. You will get both
 
 [bsidesSATX 2025 Crypto Challenge](https://www.cem.me/art/bsides25.pdf)
 
-[![BSides 2025 Crypto Challenge](https://www.cem.me/art/bsides25.png "BSides 2025 Crypto Challenge")]
+![BSides 2025 Crypto Challenge](https://www.cem.me/art/bsides25.png "BSides 2025 Crypto Challenge")
 
 <article>
   
